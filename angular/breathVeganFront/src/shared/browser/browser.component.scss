@@ -1,0 +1,60 @@
+.navigation .mat-toolbar {
+    background: linear-gradient(90deg, #FFD484 53.25%, #EDEFF1 53.26%, #EDEFF1 99.99%, #EDEFF1 100%);;
+}
+
+.navigation span {
+    margin-right: 30px;
+    color: #439C1D;
+    font-weight: 700;
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.custom-button {
+    margin-left: 10px;
+}
+
+.custom-button button {
+    background: #FFD484;
+    color: #439C1D;
+    font-weight: 500;
+    border-radius: 50px;
+    border: 1px solid #439C1D;
+    outline: none !important;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+.custom-navbar {
+  background: linear-gradient(90deg, #FFD484 53.25%, #EDEFF1 53.26%, #EDEFF1 99.99%, #EDEFF1 100%);;
+}
+
+.custom-navbar .navbar-brand {
+    color: #439C1D !important;
+    font-weight: 700;
+}
+
+.custom-navbar .navbar-collapse {
+    flex-grow: 0;
+    margin: 0px 57px;
+}
+
+.custom-navbar .nav-item {
+    border: 1px solid #439C1D !important;
+    border-radius: 50px;
+    margin-left: 10px;
+}
+
+.custom-navbar .nav-item a {
+    color: #439C1D;
+    font-weight: 700;
+}
+
+.dropdown-menu.show {
+    background: linear-gradient(99.35deg, #FFD484 50.07%, #EDEFF1 50.07%);
+    border-radius: 10px;
+}
+
+.dropdown-item {
+}
