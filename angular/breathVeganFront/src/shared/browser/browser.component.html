@@ -2,8 +2,8 @@
   <mat-toolbar>
     <span>Vegan Breath</span>
     <div class="custom-button" *ngFor="let link of navLinks">
-      <button mat-button *ngIf="link.label === 'Accueil'">{{link.label}}</button>
-      <button mat-button [matMenuTriggerFor]="homeMenu" *ngIf="link.label !== 'Accueil'">{{link.label}}</button>
+      <button mat-button *ngIf="link.label === 'Accueil'">{{link.label}}<mat-icon>arrow_drop_down</mat-icon></button>
+      <button mat-button [matMenuTriggerFor]="homeMenu" *ngIf="link.label !== 'Accueil'">{{link.label}}<mat-icon>arrow_drop_down</mat-icon></button>
       <mat-menu class="custom-mat-menu" #homeMenu="matMenu" yPosition="above">
         <button mat-menu-item>{{link.subLabel}}</button>
         <button mat-menu-item>{{link.subLabel2}}</button>
