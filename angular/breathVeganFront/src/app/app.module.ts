@@ -14,13 +14,17 @@ import {MatCardModule} from '@angular/material/card';
 import {RegistrationModule} from './modules/registration/registration.module'; 
 import {HomeModule} from './modules/home/home.module';
 import {ShopModule} from './modules/shop/shop.module';
+import { BrowserComponent } from '../shared/browser/browser.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 import { from } from 'rxjs';
 import { AuthGuard, AuthInterceptor, AuthService } from './apiServices/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
-  
+    BrowserComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,10 @@ import { AuthGuard, AuthInterceptor, AuthService } from './apiServices/auth.serv
     MatCardModule,
     RegistrationModule,
     HomeModule,
-    ShopModule
+    ShopModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [
     ShopServiceService,

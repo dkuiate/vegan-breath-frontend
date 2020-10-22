@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ShopServiceService {
 
   private apiRoot = 'http://localhost:90/';
