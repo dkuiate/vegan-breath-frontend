@@ -1,19 +1,2 @@
- <div style="text-align:center">
-    <h1>
-      Shop List
-    </h1>
-  </div>
-  <ul>
-    <li *ngFor="let item of items">
-      <h2>{{ item.description }}x {{ item.name }}
-      <button (click)="delete(item.id)">x</button></h2>
-    </li>
-  </ul>
-
-  <input #itemDescription type='text' placeholder='Qtd'>
-  <input #itemName type='text' placeholder='Name'>
-   <input #itemTown type='text' placeholder='Town'>
-    <input #itemZipCode type='text' placeholder='ZIP'>
-  <button (click)="add(itemName.value, itemDescription.value,itemTown.value,itemZipCode.value)">Add</button>
-  {{ error?.message }}
+  <router-outlet></router-outlet>
   

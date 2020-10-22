@@ -1,1 +1,18 @@
-<p>log-in works!</p>
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+<mat-card fxFlex="25" >
+<mat-toolbar color="green">Login</mat-toolbar>
+<form fxLayoutAlign="stretch" fxLayout="column" class="login-form">
+  <mat-form-field >
+    <input #username matInput placeholder="Username" >
+  </mat-form-field>
+
+   <mat-form-field >
+    <input #password matInput placeholder="Password" type="password">
+  </mat-form-field>
+  <button (click)="login(username.value, password.value)" mat-raised-button type="submit">Login</button>
+  <button style="margin-top: 10px" mat-raised-button type="submit">Sign Up</button>
+  <p>{{ error?.message }}</p>
+  <p *ngIf="error">{{ error?.error | json }}</p>
+</form>
+</mat-card>
+</div>
