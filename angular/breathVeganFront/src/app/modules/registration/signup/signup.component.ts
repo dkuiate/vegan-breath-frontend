@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormControlService } from 'app/apiServices/form-control.service';
 import { AuthService } from '../../../apiServices/auth.service';
 
 
@@ -15,10 +17,16 @@ export class SignupComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
+    public formControlService: FormControlService
   ) { }
 
   ngOnInit() {
   }
+
+  submit(){
+    return;
+  }
+
 
   signup(username: string, email: string, password1: string, password2: string) {
     this.authService.signup(username, email, password1, password2).subscribe(

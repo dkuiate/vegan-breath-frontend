@@ -1,16 +1,18 @@
 <div fxLayoutAlign="center center" fxFlexFill class="main-div">
 <mat-card fxFlex="25" >
-<mat-toolbar color="green">Login</mat-toolbar>
-<form fxLayoutAlign="stretch" fxLayout="column" class="login-form">
+<mat-toolbar class="toolbar-green">Login</mat-toolbar>
+<form [formGroup]='formControlService.loginForm' (submit)="login(username.value, password.value)"fxLayoutAlign="stretch" fxLayout="column" class="login-form">
   <mat-form-field >
-    <input #username matInput placeholder="Username" >
+    <input #username matInput placeholder="Username" formControlName="username">
+     <mat-error>Invalid email address or username</mat-error>
   </mat-form-field>
 
    <mat-form-field >
-    <input #password matInput placeholder="Password" type="password">
+    <input #password matInput placeholder="Password" type="password" formControlName="password">
+     <mat-error>Provide a password</mat-error>
   </mat-form-field>
-  <button (click)="login(username.value, password.value)" mat-raised-button type="submit">Login</button>
-  <button style="margin-top: 10px" mat-raised-button type="submit">Sign Up</button>
+  <button class="green-button" (click)="login(username.value, password.value)" mat-raised-button type="submit">Login</button>
+  <button class="green-button" style="margin-top: 10px" mat-raised-button type="submit">Sign Up</button>
   <p>{{ error?.message }}</p>
   <p *ngIf="error">{{ error?.error | json }}</p>
 </form>

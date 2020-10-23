@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormControlService } from 'app/apiServices/form-control.service';
 import { AuthService } from '../../../apiServices/auth.service';
 
 @Component({
@@ -13,7 +15,8 @@ export class LogInComponent implements OnInit {
   
 constructor(
   private authService: AuthService,
-  private router: Router
+  private router: Router,
+  public formControlService: FormControlService
 ) { }
 
   ngOnInit() {
