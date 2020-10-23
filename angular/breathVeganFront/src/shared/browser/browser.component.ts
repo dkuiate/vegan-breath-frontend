@@ -18,6 +18,7 @@ activeLinkIndex = -1;
       {
         label: 'Accueil',
         path: './home',
+        style: 'button-style',
         index: 0
       },
       {
@@ -27,6 +28,7 @@ activeLinkIndex = -1;
         subPath: './add_recipe',
         subLabel2: 'Voir liste des recettes',
         subPath2: './see_recipes_list',
+        style: 'button-style',
         index: 1
       },
       {
@@ -36,6 +38,7 @@ activeLinkIndex = -1;
         subPath: './add_shop',
         subLabel2: 'Voir liste des magasins',
         subPath2: './see_shops_list',
+        style: 'button-style',
         index: 2
       },
       {
@@ -45,8 +48,15 @@ activeLinkIndex = -1;
         subPath: './add_restaurant',
         subLabel2: 'Voir liste des restaurants',
         subPath2: './see_restaurants_list',
+        style: 'button-style',
         index: 3
-      }
+      },
+      {
+        label: 'Connexion',
+        path: './connexion',
+        style: 'connexion-button-style',
+        index: 4
+      },
     ];
   }
   

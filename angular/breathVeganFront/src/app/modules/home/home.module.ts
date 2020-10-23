@@ -12,4 +12,5 @@ import { BodyComponent } from './body/body.component';
     CommonModule
   ]
 })
+
 export class HomeModule { }

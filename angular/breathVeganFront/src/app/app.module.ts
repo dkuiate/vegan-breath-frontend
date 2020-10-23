@@ -18,6 +18,7 @@ import { BrowserComponent } from '../shared/browser/browser.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import {FormControlService} from './apiServices/form-control.service'; 
 
 import { from } from 'rxjs';
 import { AuthGuard, AuthInterceptor, AuthService } from './apiServices/auth.service';
@@ -41,12 +42,13 @@ import { AuthGuard, AuthInterceptor, AuthService } from './apiServices/auth.serv
     ShopModule,
     MatToolbarModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [
     ShopServiceService,
     AuthService,
     AuthGuard,
+    FormControlService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
