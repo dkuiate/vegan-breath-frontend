@@ -1,5 +1,5 @@
 .navigation .mat-toolbar {
-    background: linear-gradient(90deg, #FFD484 53.25%, #EDEFF1 53.26%, #EDEFF1 99.99%, #EDEFF1 100%);;
+    background: linear-gradient(90deg, #FFD484 53.25%, #EDEFF1 53.26%, #EDEFF1 99.99%, #EDEFF1 100%);
 }
 
 .navigation span {
@@ -33,7 +33,7 @@
 
 .custom-button mat-icon {
     position: relative;
-    top: 3px;
+    top: -2px;
 }
 
 .custom-button:nth-child(6) {

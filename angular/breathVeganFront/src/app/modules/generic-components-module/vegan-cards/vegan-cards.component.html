@@ -1,0 +1,16 @@
+<div class="vegan-card-list">
+  <div class="vegan-card"  *ngFor="let vegan of veganInformations">
+    <div class="vegan-card-header">
+        <h3>{{vegan.title}}</h3>
+      </div>
+      <div class="vegan-card-picture">
+          <img src="{{vegan.picture}}">
+      </div>
+      <div class="vegan-card-short-description">
+         <p>{{vegan.description}} </p>
+      </div>
+      <div class="vegan-card-see-description-button">
+          <button mat-raised-button> Voir détail</button>
+    </div>
+  </div>
+</div>
