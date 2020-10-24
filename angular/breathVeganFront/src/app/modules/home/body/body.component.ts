@@ -17,7 +17,7 @@ export class BodyComponent implements OnInit {
   }
 
   
-  private recipeList: RecipeInterface[] = [
+  public recipeList: RecipeInterface[] = [
     {
       id: 0,
       title: 'Recette 1',
