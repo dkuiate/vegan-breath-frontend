@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { PopUpComponent } from '../../app/modules/popup/pop-up/pop-up.component';
 
 @Component({
   selector: 'app-browser',
@@ -12,6 +14,7 @@ export class NavigationComponent implements OnInit {
 navLinks: any[];
 activeLinkIndex = -1;
 currentPath: string;
+
 
   constructor(private router: Router) { 
 
@@ -51,7 +54,7 @@ currentPath: string;
       },
       {
         label: 'Connexion',
-        path: './connexion',
+        path: '/login',
         style: 'connexion-button-style',
         index: 4
       },
@@ -60,19 +63,18 @@ currentPath: string;
   
   ngOnInit(): void {
     this.router.events.subscribe((res) =>{
-       //console.log(res)
        this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => {
-      //  console.log(this.activeLinkIndex)
-        /* === '.' + this.router.url*/
         if(tab.path !== undefined && tab.path.charAt(0) === "."){
           return tab.path;
         } else {
           return {subLabelIndex: tab.subPath, subLabelIndex2: tab.subPath2}
         }
        }));
-       //console.log(this.activeLinkIndex)
-       //console.log(this.activeLinkIndex)
     })
+  }
+
+  onAdd(){
+    console.log('we opening this');  
   }
 
 

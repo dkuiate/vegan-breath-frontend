@@ -1,0 +1,35 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+<mat-card fxFlex="25" >
+<mat-toolbar class="toolbar-green">Signup</mat-toolbar>
+<form [formGroup]='formControlService.signUpForm' (submit)="submit()" fxLayoutAlign="stretch" fxLayout="column" class="login-form">
+
+  <mat-form-field >
+    <input #username matInput placeholder="Username" formControlName="username">
+     <mat-error *ngIf="formControlService.signUpForm.controls['username'].errors?.required">This field is mandatory.</mat-error>
+     <mat-error *ngIf="formControlService.signUpForm.controls['username'].errors?.minlength">Minimum 4 charactors needed.</mat-error>
+  </mat-form-field>
+
+   <mat-form-field >
+    <input #email matInput placeholder="email" formControlName="email">
+    <mat-error>Invalid email address.</mat-error>
+  </mat-form-field>
+
+   <mat-form-field >
+    <input #password1 matInput placeholder="choose a password" type="password" formControlName="password">
+     <mat-error *ngIf="formControlService.signUpForm.controls['password'].errors?.required">This field is mandatory.</mat-error>
+     <mat-error *ngIf="formControlService.signUpForm.controls['username'].errors?.minlength">Minimum 5 charactors needed.</mat-error>
+     <mat-error *ngIf="formControlService.signUpForm.controls['username'].errors?.hasNumber">At least one number required.</mat-error>
+     <mat-error *ngIf="formControlService.signUpForm.controls['username'].errors?.hasCapitalCase">At least one capital case.</mat-error>
+  </mat-form-field>
+
+   <mat-form-field >
+    <input #password2 matInput placeholder="confirm Password" type="password" formControlName="confirmPassword">
+  </mat-form-field>
+<button class="green-button" (click)="signup(username.value, email.value, password1.value, password2.value)">signup</button> 
+  <p>{{ error?.message }}</p>
+  <p *ngIf="error">{{ error?.error | json }}</p>
+</form>
+</mat-card>
+</div>
+
+

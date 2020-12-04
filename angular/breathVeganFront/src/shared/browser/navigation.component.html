@@ -1,7 +1,34 @@
+<!--div class="navigation">
+<mat-toolbar color="primary">
+	<span>Vegan Breath</span>
+  <span class="example-fill-remaining-space"></span> 
+<nav mat-tab-nav-bar>
+  <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.path"  routerLinkActive #rla="routerLinkActive"  [active]="rla.isActive">
+   <div fxLayout="row" fxLayoutAlign="space-evenly center" class="custom-button" >
+      <button mat-button class="{{link.style}}" *ngIf="link.label === 'Accueil' || link.label === 'Connexion'">{{link.label}}</button>
+      <button mat-button class="{{link.style}}" [matMenuTriggerFor]="homeMenu" *ngIf="link.label !== 'Accueil' && link.label !== 'Connexion'">{{link.label}}<mat-icon>arrow_drop_down</mat-icon></button>
+      <mat-menu class="custom-mat-menu" #homeMenu="matMenu" yPosition="above">
+        <button mat-menu-item (click)="onAdd()">{{link.subLabel}}</button>
+        <button mat-menu-item>{{link.subLabel2}}</button>
+      </mat-menu>
+    </div>
+</a>
+</nav>
+</mat-toolbar>
+</div>
+<router-outlet></router-outlet-->
+
+
+
+
+
+
+
+
 <div class="navigation">
   <mat-toolbar>
     <span>Vegan Breath</span>
-    <div class="custom-button" *ngFor="let link of navLinks">
+    <div class="custom-button" *ngFor="let link of navLinks" [routerLink]="link.path"  routerLinkActive #rla="routerLinkActive"  [active]="rla.isActive">
       <button mat-button class="{{link.style}}" *ngIf="link.label === 'Accueil' || link.label === 'Connexion'" routerLink="link.path" >{{link.label}}</button>
       <button mat-button class="{{link.style}}" [matMenuTriggerFor]="homeMenu" *ngIf="link.label !== 'Accueil' && link.label !== 'Connexion'">{{link.label}}<mat-icon>arrow_drop_down</mat-icon></button>
       <mat-menu class="custom-mat-menu" #homeMenu="matMenu" yPosition="above">
@@ -11,8 +38,13 @@
     </div>
   </mat-toolbar>
 </div>
-<!--
- <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+<router-outlet></router-outlet>
+
+
+
+
+
+ <!--nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
     <a class="navbar-brand" href="#">Vegan Breath</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -42,4 +74,4 @@
     $(".dropdown-toggle").dropdown();
 });
     </script>
-  </nav>-->
+  </nav-->
