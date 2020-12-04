@@ -1,1 +1,20 @@
-<p>body works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-5 offset-lg-4 col-12 offset-5 offset-sm-5 mt-5">
+            <div class="last-news-title">
+             <h1>Les dernières actualités</h1>
+        </div>
+      </div>  
+   </div>
+    <div class="row">
+        <div class="col-lg-4 mt-5">
+            <div class="recipe-title">
+                <h2>Recettes</h2>
+                <mat-divider></mat-divider>
+                   <app-vegan-cards [veganInformations]="recipeList"></app-vegan-cards>
+            </div>
+        </div>
+    </div>
+ 
+    
+</div>

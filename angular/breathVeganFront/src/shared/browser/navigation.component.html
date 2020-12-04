@@ -1,0 +1,77 @@
+<!--div class="navigation">
+<mat-toolbar color="primary">
+	<span>Vegan Breath</span>
+  <span class="example-fill-remaining-space"></span> 
+<nav mat-tab-nav-bar>
+  <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.path"  routerLinkActive #rla="routerLinkActive"  [active]="rla.isActive">
+   <div fxLayout="row" fxLayoutAlign="space-evenly center" class="custom-button" >
+      <button mat-button class="{{link.style}}" *ngIf="link.label === 'Accueil' || link.label === 'Connexion'">{{link.label}}</button>
+      <button mat-button class="{{link.style}}" [matMenuTriggerFor]="homeMenu" *ngIf="link.label !== 'Accueil' && link.label !== 'Connexion'">{{link.label}}<mat-icon>arrow_drop_down</mat-icon></button>
+      <mat-menu class="custom-mat-menu" #homeMenu="matMenu" yPosition="above">
+        <button mat-menu-item (click)="onAdd()">{{link.subLabel}}</button>
+        <button mat-menu-item>{{link.subLabel2}}</button>
+      </mat-menu>
+    </div>
+</a>
+</nav>
+</mat-toolbar>
+</div>
+<router-outlet></router-outlet-->
+
+
+
+
+
+
+
+
+<div class="navigation">
+  <mat-toolbar>
+    <span>Vegan Breath</span>
+    <div class="custom-button" *ngFor="let link of navLinks" [routerLink]="link.path"  routerLinkActive #rla="routerLinkActive"  [active]="rla.isActive">
+      <button mat-button class="{{link.style}}" *ngIf="link.label === 'Accueil' || link.label === 'Connexion'" routerLink="link.path" >{{link.label}}</button>
+      <button mat-button class="{{link.style}}" [matMenuTriggerFor]="homeMenu" *ngIf="link.label !== 'Accueil' && link.label !== 'Connexion'">{{link.label}}<mat-icon>arrow_drop_down</mat-icon></button>
+      <mat-menu class="custom-mat-menu" #homeMenu="matMenu" yPosition="above">
+        <button mat-menu-item [routerLink]="link.subPath">{{link.subLabel}}</button>
+        <button mat-menu-item [routerLink]="link.subPath2" >{{link.subLabel2}}</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+</div>
+<router-outlet></router-outlet>
+
+
+
+
+
+ <!--nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+    <a class="navbar-brand" href="#">Vegan Breath</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown" *ngFor="let link of navLinks" [routerLink]="link.path"
+    routerLinkActive #rla="routerLinkActive">
+      <ul class="navbar-nav">
+        <li class="nav-item active" *ngIf="link.label === 'Accueil'">
+          <a class="nav-link" href="{{link.path}}">{{link.label}} <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown"  *ngIf="link.label !== 'Accueil'">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" >
+                {{link.label}}
+                
+            </a>
+           
+            <div class="dropdown-menu show" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{{link.subLink[0].path}}">{{link.subLink[0].label}}</a>
+              <a class="dropdown-item" href="{{link.subLink[1].path}}">{{link.subLink[1].label}}</a>
+            </div>
+          </li>
+      </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+    $(".dropdown-toggle").dropdown();
+});
+    </script>
+  </nav-->
