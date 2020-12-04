@@ -1,5 +1,5 @@
 
-import { NgModule } from '@angular/core';
+import { ANALYZE_FOR_ENTRY_COMPONENTS, NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -42,12 +42,14 @@ import { GenericComponentsModule } from '../app/modules/generic-components-modul
 
 import { from } from 'rxjs';
 import { AuthGuard, AuthInterceptor, AuthService } from './apiServices/auth.service';
+import { PopUpComponent } from './modules/popup/pop-up/pop-up.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BodyComponent,
     VeganCardsComponent,
+    PopUpComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -85,6 +87,8 @@ import { AuthGuard, AuthInterceptor, AuthService } from './apiServices/auth.serv
       multi: true,
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [PopUpComponent]
+  
 })
 export class AppModule { }

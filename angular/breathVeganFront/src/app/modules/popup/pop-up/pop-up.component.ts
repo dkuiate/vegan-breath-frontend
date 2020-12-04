@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopUpComponent implements OnInit {
 
+
+  content: any;
+
   constructor() { }
 
   ngOnInit(): void {
+
+    this.content = 'recette';
   }
+
+  
 
 }
