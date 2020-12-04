@@ -1,7 +1,6 @@
 import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-<<<<<<< HEAD
 import { AuthGuard } from './apiServices/auth.service';
 import { LogInComponent } from './modules/registration/log-in/log-in.component';
 import { SignupComponent } from './modules/registration/signup/signup.component';
