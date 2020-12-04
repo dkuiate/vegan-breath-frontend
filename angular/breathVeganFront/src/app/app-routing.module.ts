@@ -5,43 +5,56 @@ import { AuthGuard } from './apiServices/auth.service';
 import { LogInComponent } from './modules/registration/log-in/log-in.component';
 import { SignupComponent } from './modules/registration/signup/signup.component';
 import { ShopListComponent } from './modules/shop/shop-list/shop-list.component';
+import { VeganDetailsComponent } from '../app/modules/generic-components-module/vegan-details/vegan-details.component';
 
 
 
 const routes: Routes = [
+
   {
-    path: 'registration',
+    path:'signup',
     component: SignupComponent
-    /*loadChildren: () => import('./modules/registration/registration.module').then(
-      m => m.RegistrationModule 
-    )*/
-  
+  },
+
+  {
+    path: 'login',
+    component: LogInComponent
   },
   {
     path: 'lazyRegistration',
     loadChildren: './modules/registration/registration-routing.module#RegistrationRoutingModule'
   },
   {
-    path: 'home',
-    loadChildren: './modules/home/home-routing.module#HomeRoutingModule',
+    path: 'recepeList',
+    loadChildren: () => import('./modules/recepee/recepee.module')
+    .then(mod => mod.RecepeeModule),
     canActivate: [AuthGuard]
   },
   {
-    path:'recepee',
-    loadChildren:'/modules/recepee/recepee-routing.module#RecepeeRoutingModule'
+    path:'shopList',
+    loadChildren: () => import('./modules/shop/shop.module')
+    .then(mod => mod.ShopModule),
   },
   {
-    path:'shop',
-    loadChildren: '/modules/shop/shop-routing.module#ShopRoutingModule'
+    path:'restaurantsList',
+    loadChildren: () => import('./modules/restaurants/restaurants.module')
+    .then(mod => mod.RestaurantsModule),
+    canActivate: [AuthGuard]
   },
   {
     path:'resteurants',
     loadChildren: './modules/restaurants/restaurants-routing.module#RestaurantsRoutingModule'
+  },
+
+  {
+    path: 'details/:id', 
+    component: VeganDetailsComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
+  imports: 
+  [RouterModule.forRoot(routes, {
     preloadingStrategy: PreloadAllModules
   })],
   exports: [RouterModule],
