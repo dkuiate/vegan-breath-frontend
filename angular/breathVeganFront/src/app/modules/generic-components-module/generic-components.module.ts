@@ -7,7 +7,8 @@ import { GenericComponent } from './generic-components.component';
 import { VeganDetailsComponent } from '../generic-components-module/vegan-details/vegan-details.component';
 
 const routes: Routes = [
-    {path: 'details/:id/:title', component: VeganDetailsComponent}
+    {path: 'recipeDetails/:id/:title', component: VeganDetailsComponent},
+    {path: 'shopDetails/:id/:title', component: VeganDetailsComponent}
 ];
 
   
