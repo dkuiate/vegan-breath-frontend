@@ -3,29 +3,29 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-browser',
-  templateUrl: './browser.component.html',
-  styleUrls: ['./browser.component.scss']
+  templateUrl: './navigation.component.html',
+  styleUrls: ['./navigation.component.scss']
 })
 
-export class BrowserComponent implements OnInit {
+export class NavigationComponent implements OnInit {
 
 navLinks: any[];
 activeLinkIndex = -1;
+currentPath: string;
 
   constructor(private router: Router) { 
 
     this.navLinks = [
       {
         label: 'Accueil',
-        path: './home',
+        path: '/',
         style: 'button-style',
         index: 0
       },
       {
         label: 'Recette',
-        path: './recipe',
         subLabel: 'Ajouter une recette', 
-        subPath: './add_recipe',
+        subPath: '/add_recipe',
         subLabel2: 'Voir liste des recettes',
         subPath2: './see_recipes_list',
         style: 'button-style',
@@ -33,7 +33,6 @@ activeLinkIndex = -1;
       },
       {
         label: 'Magasin',
-        path: './shop',
         subLabel: 'Ajouter un magasin', 
         subPath: './add_shop',
         subLabel2: 'Voir liste des magasins',
@@ -43,7 +42,6 @@ activeLinkIndex = -1;
       },
       {
         label: 'Restaurant',
-        path: './restaurant',
         subLabel: 'Ajouter un restaurant', 
         subPath: './add_restaurant',
         subLabel2: 'Voir liste des restaurants',
@@ -62,7 +60,18 @@ activeLinkIndex = -1;
   
   ngOnInit(): void {
     this.router.events.subscribe((res) =>{
-       this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => tab.link === '.' + this.router.url));
+       //console.log(res)
+       this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => {
+      //  console.log(this.activeLinkIndex)
+        /* === '.' + this.router.url*/
+        if(tab.path !== undefined && tab.path.charAt(0) === "."){
+          return tab.path;
+        } else {
+          return {subLabelIndex: tab.subPath, subLabelIndex2: tab.subPath2}
+        }
+       }));
+       //console.log(this.activeLinkIndex)
+       //console.log(this.activeLinkIndex)
     })
   }
 

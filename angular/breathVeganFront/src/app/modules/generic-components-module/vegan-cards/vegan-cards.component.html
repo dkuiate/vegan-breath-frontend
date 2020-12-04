@@ -1,16 +1,19 @@
 <div class="vegan-card-list">
-  <div class="vegan-card"  *ngFor="let vegan of veganInformations">
-    <div class="vegan-card-header">
-        <h3>{{vegan.title}}</h3>
-      </div>
-      <div class="vegan-card-picture">
-          <img src="{{vegan.picture}}">
-      </div>
-      <div class="vegan-card-short-description">
-         <p>{{vegan.description}} </p>
-      </div>
-      <div class="vegan-card-see-description-button">
-          <button mat-raised-button> Voir détail</button>
-    </div>
+  <mat-card class="vegan-card" *ngFor="let vegan of veganInformations">
+    <mat-card-header class="vegan-card-header">
+      <mat-card-title>{{vegan.title}}</mat-card-title>
+    </mat-card-header>
+    <div class="vegan-card-picture">
+      <img src="{{vegan.picture}}">
   </div>
+    <mat-card-content>
+      <div class="vegan-card-short-description">
+        <p>{{vegan.description}} </p>
+    </div>
+    </mat-card-content>
+    <mat-card-actions class="vegan-card-see-description-button">
+      <button mat-raised-button (click)="selectedVegan(vegan)"> Voir détails</button>
+     
+    </mat-card-actions>
+  </mat-card>
 </div>
