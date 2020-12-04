@@ -1,6 +1,27 @@
 <div fxLayoutAlign="center center" fxFlexFill class="main-div">
-    <mat-card fxFlex="50" >
+ <form>
     <mat-toolbar class="toolbar-green">Ajouter un magasin</mat-toolbar>
+    <div  fxLayout="column" fxLayoutAlign="space-between stretch">
+    <mat-form-field appearance="outline">
+        <mat-hint>Titre</mat-hint>
+        <mat-label>Insérer un titre</mat-label>
+        <input matInput placeholder="Placeholder">
+      </mat-form-field>
+        
+      <mat-form-field appearance="outline">
+        <mat-hint>Image</mat-hint>
+        <mat-label>Insérer une image</mat-label>
+        <input matInput placeholder="Placeholder">
+        <mat-icon matSuffix>insert_photo</mat-icon>
+      </mat-form-field>
 
-    </mat-card>
+      <mat-form-field appearance="outline">
+        <mat-hint>Description</mat-hint>
+        <mat-label>Insérer une description</mat-label>
+        <input matInput placeholder="Placeholder">
+      </mat-form-field>
+    </div>
+
+        
+</form>
 </div>
