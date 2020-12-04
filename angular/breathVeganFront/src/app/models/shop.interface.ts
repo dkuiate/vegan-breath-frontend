@@ -1,6 +1,6 @@
-export interface RecipeInterface {
+export interface ShopInterface {
     id: number;
-    productName: string;
+    productName: string
     title: string;
     picture: any;
     description: string;

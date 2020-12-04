@@ -23,13 +23,18 @@ private location: Location
     this.activatedRoute.paramMap
     .subscribe((res: any) =>{
       this.recipeDetail = [];
-       const currentDetailsResult = this.getCurrentDetails(res.params.id)
+      //console.log(res.params)
+       const currentDetailsResult = this.getCurrentDetails(res.params.id, res.params.title)
        this.recipeDetail.push(currentDetailsResult);
+       //console.log(this.recipeDetail)
     });
   }
 
 
-  private recipeDetails: any[] = [
+private  productDetails: any[] = [
+ {
+  productDetails:'recipeDetails',
+  recipeDetails: [
     {
       id: 0,
       title: 'Recette 1',
@@ -51,15 +56,47 @@ private location: Location
       picture:'assets/imgs/kisspng-vegetarian-cuisine-leaf-vegetable-side-dish-spicy-shredded-cabbage-5a995ae9122ee5.6192060815199997210745.png',
     }
   ]
+},
+{
+  productDetails:'shopDetails',
+  shopDetails: [
+        {
+          id: 0,
+          title: 'Magasin 1',
+          picture:'assets/imgs/kisspng-vegetarian-cuisine-leaf-vegetable-side-dish-spicy-shredded-cabbage-5a995ae9122ee5.6192060815199997210745.png',
+        },
+        {
+          id: 1,
+          title: 'Magasin 2',
+          picture:'assets/imgs/kisspng-vegetarian-cuisine-leaf-vegetable-side-dish-spicy-shredded-cabbage-5a995ae9122ee5.6192060815199997210745.png',
+        },
+        {
+          id: 2,
+          title: 'Magasin 3',
+          picture:'assets/imgs/kisspng-vegetarian-cuisine-leaf-vegetable-side-dish-spicy-shredded-cabbage-5a995ae9122ee5.6192060815199997210745.png',
+        },
+        {
+          id: 3,
+          title: 'Magasin 4',
+          picture:'assets/imgs/kisspng-vegetarian-cuisine-leaf-vegetable-side-dish-spicy-shredded-cabbage-5a995ae9122ee5.6192060815199997210745.png',
+        }
+      ]
+    }
+  ]
 
-  getCurrentDetails(id: string): Observable<any> {
-   const idNumber = this.convertStringToInt(id);
-   return this.recipeDetails.find(v => v.id === idNumber)
+  getCurrentDetails(id: string, title: string): Observable<any> {
+  const newTitle = this.changeTitle(title);
+  //console.log(newTitle)
+    for(const product of this.productDetails) {
+        const idNumber = this.convertStringToInt(id);
+      if(newTitle === product.productDetails) {
+        return product[newTitle].find(p => p.id == idNumber)
+      }
+    }
   }
 
-      //convert the values of type string in int
-      convertStringToInt(value: string) {
-
+  //convert the values of type string in int
+  convertStringToInt(value: string) {
         if (value < '1') {
             return parseFloat(value);
         } else {
@@ -67,8 +104,22 @@ private location: Location
         }
     }
 
-    goBack(): void {
-      this.location.back();
+    changeTitle(title: string){
+      const lowerCaseTitle = title.toLowerCase();
+      const removeLastChar = lowerCaseTitle.substring(0, lowerCaseTitle.length - 1)
+      return this.englishTraduction(removeLastChar);
     }
 
+    englishTraduction(title: string) {
+      switch (title) {
+        case 'recette':
+          return 'recipeDetails';
+        case 'magasin':
+          return 'shopDetails';
+        case 'restaurant':
+          return 'restaurantDetails';
+        default:
+          return title;
+      }
+    }
 }

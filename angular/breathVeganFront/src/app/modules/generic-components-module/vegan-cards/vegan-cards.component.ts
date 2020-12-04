@@ -19,9 +19,9 @@ export class VeganCardsComponent implements OnInit {
 
   selectedVegan(vegan: any) {
     const test = vegan.title.replace(/ /g, '');
-    console.log(test)
+    console.log(vegan)
     
-    this.router.navigate(['/details', vegan.id, vegan.title.replace(/ /g, '')])
+    this.router.navigate([`/${vegan.productName}Details`, vegan.id, vegan.title.replace(/ /g, '')])
   }
 
 
