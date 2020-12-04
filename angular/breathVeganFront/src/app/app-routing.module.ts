@@ -11,7 +11,7 @@ import { ShopListComponent } from './modules/shop/shop-list/shop-list.component'
 const routes: Routes = [
 
   {
-    path:'/signup',
+    path:'signup',
     component: SignupComponent
   },
 

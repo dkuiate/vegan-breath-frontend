@@ -56,7 +56,7 @@ activeLinkIndex = -1;
       },
       {
         label: 'Connexion',
-        path: '/registration',
+        path: '/login',
         style: 'connexion-button-style',
         index: 4
       },
@@ -70,8 +70,7 @@ activeLinkIndex = -1;
   }
 
   onAdd(){
-    console.log('we opening this');
-  }
+    console.log('we opening this');  }
 
 
 }
