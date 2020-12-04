@@ -18,14 +18,16 @@ import { BrowserComponent } from '../shared/browser/browser.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import {FormControlService} from './apiServices/form-control.service'; 
+import {FormControlService} from './apiServices/form-control.service';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog'; 
 
 import { from } from 'rxjs';
 import { AuthGuard, AuthInterceptor, AuthService } from './apiServices/auth.service';
+
 @NgModule({
   declarations: [
     AppComponent,
-    BrowserComponent
+    BrowserComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { AuthGuard, AuthInterceptor, AuthService } from './apiServices/auth.serv
     MatToolbarModule,
     MatMenuModule,
     MatIconModule,
+    MatDialogModule
   ],
   providers: [
     ShopServiceService,

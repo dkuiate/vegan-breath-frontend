@@ -9,13 +9,15 @@ import { ShopListComponent } from './modules/shop/shop-list/shop-list.component'
 
 
 const routes: Routes = [
+
   {
-    path: 'registration',
+    path:'/signup',
     component: SignupComponent
-    /*loadChildren: () => import('./modules/registration/registration.module').then(
-      m => m.RegistrationModule 
-    )*/
-  
+  },
+
+  {
+    path: 'login',
+    component: LogInComponent
   },
   {
     path: 'lazyRegistration',
