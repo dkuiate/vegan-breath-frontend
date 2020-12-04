@@ -10,4 +10,5 @@ import { FooterComponent } from './footer/footer.component';
     CommonModule,
   ],
 })
+
 export class HomeModule { }

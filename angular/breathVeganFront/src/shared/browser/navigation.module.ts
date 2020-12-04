@@ -7,7 +7,8 @@ import { NavigationComponent } from './navigation.component'
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import { BodyComponent } from '../../app/modules/home/body/body.component'
+import { BodyComponent } from '../../app/modules/home/body/body.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -21,7 +22,8 @@ import { BodyComponent } from '../../app/modules/home/body/body.component'
         BrowserAnimationsModule,
         MatToolbarModule,
         MatMenuModule,
-        MatIconModule
+        MatIconModule,
+        RouterModule
     ],
     providers: [],
     exports: [

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormControlService } from '../../../apiServices/form-control.service';
+import { AuthService } from '../../../apiServices/auth.service';
 
 @Component({
   selector: 'app-log-in',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogInComponent implements OnInit {
 
-  constructor() { }
+ error: any;
+  
+constructor(
+  private authService: AuthService,
+  private router: Router,
+  public formControlService: FormControlService
+) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
+  login(username: string, password: string){
+    console.log('la console marche');
+    this.authService.login(username,password).subscribe(
+      _success => this.router.navigate(['shop-list']),
+      error => this.error = error
+      
+    );
+    console.log("logged", localStorage.getItem('token'));
+  }
 }
