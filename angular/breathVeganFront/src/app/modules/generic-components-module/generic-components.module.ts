@@ -8,7 +8,8 @@ import { VeganDetailsComponent } from '../generic-components-module/vegan-detail
 
 const routes: Routes = [
     {path: 'recipeDetails/:id/:title', component: VeganDetailsComponent},
-    {path: 'shopDetails/:id/:title', component: VeganDetailsComponent}
+    {path: 'shopDetails/:id/:title', component: VeganDetailsComponent},
+    {path: 'restaurantDetails/:id/:title', component: VeganDetailsComponent},
 ];
 
   

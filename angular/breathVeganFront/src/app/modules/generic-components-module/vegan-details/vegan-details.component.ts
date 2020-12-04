@@ -63,25 +63,50 @@ private  productDetails: any[] = [
         {
           id: 0,
           title: 'Magasin 1',
-          picture:'assets/imgs/kisspng-vegetarian-cuisine-leaf-vegetable-side-dish-spicy-shredded-cabbage-5a995ae9122ee5.6192060815199997210745.png',
+          picture:'assets/imgs/mockup-black-t-shirt-Front.jpg',
         },
         {
           id: 1,
           title: 'Magasin 2',
-          picture:'assets/imgs/kisspng-vegetarian-cuisine-leaf-vegetable-side-dish-spicy-shredded-cabbage-5a995ae9122ee5.6192060815199997210745.png',
+          picture:'assets/imgs/mockup-black-t-shirt-Front.jpg',
         },
         {
           id: 2,
           title: 'Magasin 3',
-          picture:'assets/imgs/kisspng-vegetarian-cuisine-leaf-vegetable-side-dish-spicy-shredded-cabbage-5a995ae9122ee5.6192060815199997210745.png',
+          picture:'assets/imgs/Huile_de_noix_de_coco.jpg',
         },
         {
           id: 3,
           title: 'Magasin 4',
-          picture:'assets/imgs/kisspng-vegetarian-cuisine-leaf-vegetable-side-dish-spicy-shredded-cabbage-5a995ae9122ee5.6192060815199997210745.png',
+          picture:'assets/imgs/Huile_de_noix_de_coco.jpg',
         }
       ]
-    }
+    },
+    {
+      productDetails:'restaurantDetails',
+      restaurantDetails: [
+            {
+              id: 0,
+              title: 'Restaurant 1',
+              picture:'assets/imgs/restaurant-449952_1920.jpg',
+            },
+            {
+              id: 1,
+              title: 'Restaurant 2',
+              picture:'assets/imgs/restaurant-449952_1920.jpg',
+            },
+            {
+              id: 2,
+              title: 'Restaurant 3',
+              picture:'assets/imgs/restaurant-449952_1920.jpg',
+            },
+            {
+              id: 3,
+              title: 'Restaurant 4',
+              picture:'assets/imgs/restaurant-449952_1920.jpg',
+            }
+          ]
+        }
   ]
 
   getCurrentDetails(id: string, title: string): Observable<any> {
