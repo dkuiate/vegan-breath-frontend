@@ -3,33 +3,35 @@ import { ANALYZE_FOR_ENTRY_COMPONENTS, NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ShopServiceService } from './apiServices/shop-service.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card'; 
-import {RegistrationModule} from './modules/registration/registration.module'; 
-import {HomeModule} from './modules/home/home.module';
-import {ShopModule} from './modules/shop/shop.module';
+import { RegistrationModule } from './modules/registration/registration.module'; 
+import { HomeModule } from './modules/home/home.module';
+import { ShopModule } from './modules/shop/shop.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Routes, RouterModule } from '@angular/router';
-import {NavigationModule} from '../shared/browser/navigation.module';
+import { NavigationModule } from '../shared/browser/navigation.module';
+import { GenericComponentsModule } from '../app/modules/generic-components-module/generic-components.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
-
-
+import { AppComponent } from './app.component';
 import { BodyComponent } from './modules/home/body/body.component';
+import { VeganCardsComponent } from './modules/generic-components-module/vegan-cards/vegan-cards.component';
+
+import { ShopServiceService } from './apiServices/shop-service.service';
+import { FormControlService } from './apiServices/form-control.service';
 
 //Material
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card'; 
 import { MatIconModule } from '@angular/material/icon';
-import {FormControlService} from './apiServices/form-control.service';
-import {MatDialogModule, MatDialogRef} from '@angular/material/dialog'; 
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'; 
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
-import { VeganCardsComponent } from './modules/generic-components-module/vegan-cards/vegan-cards.component';
-import { GenericComponentsModule } from '../app/modules/generic-components-module/generic-components.module';
+
+
+
 
 //import { BodyComponent } from './body/body.component';
  const routes: Routes = [

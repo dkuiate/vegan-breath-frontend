@@ -11,3 +11,22 @@
     color: white!important;
     background: #439C1D;
 }
+
+.column-center {
+    float: none;
+    margin: auto;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url('../src/assets/fonts/Montserrat-Regular.ttf') format("ttf");
+}
+
+.ingredients-list li::marker {
+    color: #439C1D;
+}
+
+mat-divider {
+    background: #439C1D;
+  }
+
