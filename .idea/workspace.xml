@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33d8532f-5a83-4494-b528-d48b0411627c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/popup/pop-up/pop-up.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/popup/pop-up/pop-up.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/popup/pop-up/pop-up.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/popup/pop-up/pop-up.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/registration/log-in/log-in.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/registration/log-in/log-in.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/shared/browser/navigation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/shared/browser/navigation.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/assets/fonts/Montserrat-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/assets/imgs/print.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/assets/imgs/share.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/assets/imgs/star.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/generic-components.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/generic-components.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/styles.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,6 +37,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -41,11 +48,34 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1609368185173</updated>
-      <workItem from="1609368188851" duration="1587000" />
+      <workItem from="1609368188851" duration="2064000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="dev" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -1,6 +1,74 @@
-<div class="vegan-details-component" *ngFor="let vd of recipeDetail">
-    <p>{{vd.title}}</p>
-</div>
-<div class="backToHome">
-  <a routerLink="/">go back</a>
-</div>
+<div class="container-fluid">
+  <div class="vegan-details-component" *ngFor="let pda of productDetailsArray">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4 col-sm-12 offset-sm-1 col-12 offset-4">
+          <div class="product-detail-title">
+              <h1>{{pda.title}}</h1>
+            </div>
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3 col-sm-12 offset-sm-1 offset-4">
+          <div class="product-detail-picture">
+            <img src="{{pda.picture}}">
+          </div>
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-lg-12 offset-lg-0 col-sm-12 offset-sm-1 col-12 offset-4">
+        <div class="ingredients-title">
+           <h2>{{pda.subTitle1}}</h2>
+           <mat-divider></mat-divider>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 offset-lg-0 col-sm-12 offset-sm-1 col-12 offset-4">
+        <div class="ingredients-list">
+           <ul *ngFor="let il of pda.informationsList">
+             <li>{{il}}</li>
+           </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 offset-lg-0 col-sm-12 offset-sm-1 col-12 offset-4">
+        <div class="making-recipe-title">
+           <h2>{{pda.subTitle2}}</h2>
+           <mat-divider></mat-divider>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1 col-sm-12 offset-sm-1 col-12 offset-4">
+        <div class="making-recipe-description">
+           <p>{{pda.description}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 offset-lg-0 col-sm-12 offset-sm-1 col-12 offset-4">
+        <div class="group-button">
+          <div class="row">
+            <div class="col-lg-4 col-4">
+              <button mat-raised-button><img src="assets/imgs/star.svg">Favoris</button>
+            </div>
+            <div class="col-lg-4 col-4">
+              <button mat-raised-button><img src="assets/imgs/share.svg">Partager</button>
+            </div>
+            <div class="col-lg-4 col-4">
+              <button mat-raised-button><img src="assets/imgs/print.svg">Imprimer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-1">
+        <div class="back-to-home">
+          <a routerLink="/"> <- Retour</a>
+        </div>
+      </div>
+    </div>
+   </div>
+ </div>

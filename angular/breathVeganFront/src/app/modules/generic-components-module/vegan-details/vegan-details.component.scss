@@ -1,0 +1,96 @@
+.product-detail-title h1 {
+  font-size: 48px;
+  margin: 146px 0 20px 0;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.product-detail-picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-detail-picture img {
+  width: 443px;
+  height: 457px;
+  border: 1px solid #439C1D;
+}
+
+.head-detail-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ingredients-title h2{
+  text-align: center;
+  margin: 170px 0 12px 0;
+  font-size: 48px;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.ingredients-list {
+   margin-top: 66px;
+}
+
+.ingredients-list li {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.ingredients-list li::marker {
+  height: 15px !important;
+  width: 15px !important;
+  color: #439C1D;
+}
+
+.making-recipe-title h2 {
+  text-align: center;
+  margin: 170px 0 12px 0;
+  font-size: 48px;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.making-recipe-description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.making-recipe-description p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 66px;
+}
+
+.group-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 66px;
+}
+
+.group-button button {
+  background-color: #439C1D;
+  color: white;
+  border-radius: 0;
+  width: 120px;
+}
+
+.group-button img {
+  width: 21px;
+  height: 21px;
+  margin-right: 8px;
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+}
+
+.back-to-home {
+  margin: 66px 0 20px 0;
+}
