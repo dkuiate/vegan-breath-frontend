@@ -23,9 +23,8 @@ constructor(
   }
 
   login(username: string, password: string){
-    console.log('la console marche');
     this.authService.login(username,password).subscribe(
-      _success => this.router.navigate(['shop-list']),
+      _success => this.router.navigate(['']),
       error => this.error = error
       
     );

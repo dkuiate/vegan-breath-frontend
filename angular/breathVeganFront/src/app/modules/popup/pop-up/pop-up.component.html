@@ -1,8 +1,8 @@
 <div fxLayoutAlign="center center" fxFlexFill class="main-div">
  <form>
-    <mat-toolbar class="toolbar-green">Ajouter un magasin</mat-toolbar>
+    <mat-toolbar class="toolbar-popup">Ajouter un magasin</mat-toolbar>
     <div  fxLayout="column" fxLayoutAlign="space-between stretch">
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" >
         <mat-hint>Titre</mat-hint>
         <mat-label>Insérer un titre</mat-label>
         <input matInput placeholder="Placeholder">
@@ -15,11 +15,11 @@
         <mat-icon matSuffix>insert_photo</mat-icon>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-hint>Description</mat-hint>
-        <mat-label>Insérer une description</mat-label>
-        <input matInput placeholder="Placeholder">
-      </mat-form-field>
+     <mat-form-field appearance="outline">
+    <mat-label>Insérer une description</mat-label>
+    <textarea matInput></textarea>
+    <mat-hint>Description</mat-hint>
+  </mat-form-field>
     </div>
 
         
