@@ -1,0 +1,11 @@
+<div class="favorite-list-container">
+    <div class="favorite-title">
+        <h2>Mes Favoris</h2>
+        <mat-divider></mat-divider>
+    </div>
+    <div class="favorite-list">
+       <ul *ngFor="let flr of favoritesListResult; let i=index">
+           <li (click)="selectedVegan(flr)">{{flr.title}} <button mat-raised-button (click)="deleteFavoris(flr)">Supprimer</button></li>
+       </ul>
+    </div>
+</div>

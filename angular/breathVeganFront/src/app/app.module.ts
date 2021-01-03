@@ -1,5 +1,5 @@
 
-import { ANALYZE_FOR_ENTRY_COMPONENTS, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,11 +15,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { AppComponent } from './app.component';
-import { BodyComponent } from './modules/home/body/body.component';
 import { VeganCardsComponent } from './modules/generic-components-module/vegan-cards/vegan-cards.component';
+import { BodyComponent } from './modules/home/body/body.component';
 
 import { ShopServiceService } from './apiServices/shop-service.service';
 import { FormControlService } from './apiServices/form-control.service';
+import { VeganProductListService } from './service/vegan-product-list.service';
 
 //Material
 import { MatInputModule } from '@angular/material/input';
@@ -36,7 +37,10 @@ import { MatMenuModule } from '@angular/material/menu';
 //import { BodyComponent } from './body/body.component';
  const routes: Routes = [
   // { path: '', redirectTo: '/first', pathMatch: 'full' },
- { path: '', component: BodyComponent },
+  { 
+    path: '', 
+    component: BodyComponent 
+  },
  /* { path: 'first', component: Component1Component } ,
   { path: 'second', component: Component2Component },
   { path: 'third', component: Component3Component }*/
@@ -46,12 +50,14 @@ import { from } from 'rxjs';
 import { AuthGuard, AuthInterceptor, AuthService } from './apiServices/auth.service';
 import { PopUpComponent } from './modules/popup/pop-up/pop-up.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    BodyComponent,
     VeganCardsComponent,
-    PopUpComponent,
+    PopUpComponent, 
+    BodyComponent
   ],
   imports: [
     AppRoutingModule,
@@ -76,13 +82,14 @@ import { PopUpComponent } from './modules/popup/pop-up/pop-up.component';
     MatCardModule,
     GenericComponentsModule,
     NavigationModule,
-   RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes)
   ],
   providers: [
     ShopServiceService,
     AuthService,
     AuthGuard,
     FormControlService,
+    VeganProductListService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

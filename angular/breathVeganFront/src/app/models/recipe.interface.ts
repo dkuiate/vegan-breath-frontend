@@ -4,4 +4,5 @@ export interface RecipeInterface {
     title: string;
     picture: any;
     description: string;
+    favoriteState: boolean;
 }

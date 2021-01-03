@@ -6,6 +6,7 @@ import { LogInComponent } from './modules/registration/log-in/log-in.component';
 import { SignupComponent } from './modules/registration/signup/signup.component';
 import { ShopListComponent } from './modules/shop/shop-list/shop-list.component';
 import { VeganDetailsComponent } from '../app/modules/generic-components-module/vegan-details/vegan-details.component';
+import { FavoritesListComponent } from '../app/modules/generic-components-module/favorites-list/favorites-list.component';
 
 
 
@@ -47,8 +48,13 @@ const routes: Routes = [
   },
 
   {
-    path: 'details/:id', 
+    path: 'details/:id/:title', 
     component: VeganDetailsComponent
+  },
+
+  {
+    path: 'favoriteList', 
+    component: FavoritesListComponent
   }
 ];
 

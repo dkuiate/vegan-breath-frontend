@@ -1,5 +1,24 @@
 <div class="container-fluid">
   <div class="vegan-details-component" *ngFor="let pda of productDetailsArray">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="follow-product">
+          <button mat-icon-button (click)="favoriteState(pda)">
+          <mat-icon
+          *ngIf="pda.favoriteState"
+           aria-label="Example icon-button with a heart icon">
+           favorite
+         </mat-icon>
+
+         <mat-icon
+         *ngIf="!pda.favoriteState"
+         aria-label="Example icon-button with a heart icon">
+         favorite_border
+         </mat-icon>
+        </button>
+        </div>
+      </div>
+    </div>
       <div class="row">
         <div class="col-lg-4 offset-lg-4 col-sm-12 offset-sm-1 col-12 offset-4">
           <div class="product-detail-title">
@@ -51,7 +70,7 @@
         <div class="group-button">
           <div class="row">
             <div class="col-lg-4 col-4">
-              <button mat-raised-button><img src="assets/imgs/star.svg">Favoris</button>
+              <button [ngStyle]="{'background-color': pda.favoriteState === false ? '#439C1D' : '#767676'}" mat-raised-button (click)="favoriteManager(pda.id, pda.title, pda.favoriteState)"><img src="assets/imgs/star.svg">Favoris</button>
             </div>
             <div class="col-lg-4 col-4">
               <button mat-raised-button><img src="assets/imgs/share.svg">Partager</button>
@@ -67,6 +86,9 @@
       <div class="col-lg-1">
         <div class="back-to-home">
           <a routerLink="/"> <- Retour</a>
+        </div>
+        <div class="favorites">
+          <a routerLink="/favoriteList">Favoris</a>
         </div>
       </div>
     </div>
