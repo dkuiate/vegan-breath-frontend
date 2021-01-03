@@ -79,6 +79,8 @@ currentPath: string;
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
+    dialogConfig.height = "589px"
+    dialogConfig.width = "383px"
     this.dialog.open(PopUpComponent, dialogConfig);
    
   }
