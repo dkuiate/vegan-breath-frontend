@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import './material-overrides.scss';
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@font-face {
+    font-family: "Montserrat";
+    src: url('../src/assets/fonts/Montserrat-Regular.ttf') format("ttf");
+}
 
 .toolbar-green {
     color: white!important;
@@ -17,16 +22,15 @@
     margin: auto;
 }
 
-@font-face {
-    font-family: "Montserrat";
-    src: url('../src/assets/fonts/Montserrat-Regular.ttf') format("ttf");
-}
-
 .ingredients-list li::marker {
     color: #439C1D;
 }
 
 mat-divider {
     background: #439C1D;
-  }
+}
+
+button:focus {
+    outline: none;
+}
 

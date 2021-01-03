@@ -4,4 +4,5 @@ export interface RestaurantInterface {
     title: string;
     picture: any;
     description: string;
+    favoriteState: boolean;
 }

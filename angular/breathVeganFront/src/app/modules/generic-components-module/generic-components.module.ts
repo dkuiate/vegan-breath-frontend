@@ -7,6 +7,10 @@ import { GenericComponent } from './generic-components.component';
 import { VeganDetailsComponent } from '../generic-components-module/vegan-details/vegan-details.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { FavoritesListComponent } from '../generic-components-module/favorites-list/favorites-list.component';
+import { FavoriteManagerService } from '../../service/favorites-manager.services';
+import { VeganDetailsService } from '../../service/vegan-details.service';
 
 const routes: Routes = [
     {path: 'recipeDetails/:id/:title', component: VeganDetailsComponent},
@@ -18,7 +22,8 @@ const routes: Routes = [
 @NgModule({
     declarations: [
         GenericComponent,
-        VeganDetailsComponent
+        VeganDetailsComponent,
+        FavoritesListComponent
     ],
     imports: [
         BrowserModule,
@@ -26,9 +31,10 @@ const routes: Routes = [
         BrowserAnimationsModule,
         MatDividerModule,
         MatButtonModule,
+        MatIconModule,
         RouterModule.forRoot(routes)
     ],
-    providers: [],
+    providers: [FavoriteManagerService, VeganDetailsService],
     exports: [
         GenericComponent,
     ],
