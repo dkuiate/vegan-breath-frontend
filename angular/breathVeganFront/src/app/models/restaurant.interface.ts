@@ -1,8 +1,9 @@
-export interface RestaurantInterface {
-    id: number;
-    productName: string;
-    title: string;
-    picture: any;
-    description: string;
-    favoriteState: boolean;
+export class RestaurantModel {
+  id: number;
+  title: string;
+  email: string;
+  description: string;
+  created_at: Date;
+  picture: any;
+  favoriteState: boolean;
 }

@@ -1,7 +1,9 @@
-export interface ShopInterface {
-    id: number;
-    productName: string
-    title: string;
-    picture: any;
-    description: string;
+export class ShopModel {
+  id: number;
+  title: string;
+  description: string;
+  picture: any;
+  email: any;
+  created_at: Date;
+  address: string;
 }
