@@ -1,8 +1,9 @@
-export interface RecipeInterface {
-    id: number;
-    productName: string;
-    title: string;
-    picture: any;
-    description: string;
-    favoriteState: boolean;
+export class RecipeModel {
+  id: number;
+  title: string;
+  description: string;
+  picture: any;
+  created_at: Date;
+  ingredients: [];
+  favoriteState: boolean;
 }
