@@ -77,4 +77,8 @@ productDetailsArray: any[] = [];
         this.veganDetailsService.favoritesListResult.splice(productDetailsCurrent.id, 1);
       }
     }
+
+    printPage() {
+      window.print();
+    }
 }
