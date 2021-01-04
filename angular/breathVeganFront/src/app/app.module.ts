@@ -19,13 +19,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import {FormControlService} from './apiServices/form-control.service'; 
-
+import { AgmCoreModule } from '@agm/core';
 import { from } from 'rxjs';
 import { AuthGuard, AuthInterceptor, AuthService } from './apiServices/auth.service';
+import { ApimapComponent } from './apimap/apimap.component';
 @NgModule({
   declarations: [
     AppComponent,
-    BrowserComponent
+    BrowserComponent,
+    ApimapComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,9 @@ import { AuthGuard, AuthInterceptor, AuthService } from './apiServices/auth.serv
     MatToolbarModule,
     MatMenuModule,
     MatIconModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAABqwkqj04XsQ01mQ2X7m-GYDmjtoPLqk'
+    })
   ],
   providers: [
     ShopServiceService,
