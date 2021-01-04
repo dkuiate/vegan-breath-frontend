@@ -1,3 +1,8 @@
+.banner img {
+   height: 820px;
+   width: 100%;
+}
+
 .last-news-title h1 {
     font-size: 48px;
     font-family: 'Montserrat', sans-serif;
