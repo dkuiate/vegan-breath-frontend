@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RecipeInterface } from '../models/recipe.interface';
-import { ShopInterface } from '../models/shop.interface';
-import { RestaurantInterface } from '../models/restaurant.interface';
+
 
 @Injectable()
 
@@ -9,7 +7,7 @@ export class VeganProductListService {
 
   constructor() { }
 
-  public recipeList: RecipeInterface[] = [
+  /*public recipeList: RecipeInterface[] = [
     {
       id: 0,
       productName: 'recette',
@@ -41,10 +39,10 @@ export class VeganProductListService {
       picture:'assets/imgs/kisspng-vegetarian-cuisine-leaf-vegetable-side-dish-spicy-shredded-cabbage-5a995ae9122ee5.6192060815199997210745.png',
       description: 'Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro',
       favoriteState: false
-    }, 
+    },
   ]
 
-  
+
 
   public shopList: ShopInterface[] = [
     {
@@ -122,7 +120,7 @@ export class VeganProductListService {
 
   getShopList(){
     return this.shopList
-  }
+  }*/
 
 
 }

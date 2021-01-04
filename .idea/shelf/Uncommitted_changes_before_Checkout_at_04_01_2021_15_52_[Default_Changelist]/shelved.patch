@@ -1,0 +1,73 @@
+Index: angular/breathVeganFront/src/app/service/vegan-product-list.service.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { Injectable } from '@angular/core';\nimport { RecipeInterface } from '../models/recipe.interface';\nimport { ShopInterface } from '../models/shop.interface';\nimport { RestaurantInterface } from '../models/restaurant.interface';\n\n@Injectable()\n\nexport class VeganProductListService {\n\n  constructor() { }\n\n  public recipeList: RecipeInterface[] = [\n    {\n      id: 0,\n      productName: 'recette',\n      title: 'Recette 1',\n      picture:'assets/imgs/kisspng-vegetarian-cuisine-leaf-vegetable-side-dish-spicy-shredded-cabbage-5a995ae9122ee5.6192060815199997210745.png',\n      description: 'Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro',\n      favoriteState: false\n    },\n    {\n      id: 1,\n      productName: 'recette',\n      title: 'Recette 2',\n      picture:'assets/imgs/kisspng-vegetarian-cuisine-leaf-vegetable-side-dish-spicy-shredded-cabbage-5a995ae9122ee5.6192060815199997210745.png',\n      description: 'Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro',\n      favoriteState: false\n    },\n    {\n      id: 2,\n      productName: 'recette',\n      title: 'Recette 3',\n      picture:'assets/imgs/kisspng-vegetarian-cuisine-leaf-vegetable-side-dish-spicy-shredded-cabbage-5a995ae9122ee5.6192060815199997210745.png',\n      description: 'Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro',\n      favoriteState: false\n    },\n    {\n      id: 3,\n      productName: 'recette',\n      title: 'Recette 4',\n      picture:'assets/imgs/kisspng-vegetarian-cuisine-leaf-vegetable-side-dish-spicy-shredded-cabbage-5a995ae9122ee5.6192060815199997210745.png',\n      description: 'Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro',\n      favoriteState: false\n    }, \n  ]\n\n  \n\n  public shopList: ShopInterface[] = [\n    {\n      id: 0,\n      productName: 'magasin',\n      title: 'Magasin 1',\n      picture:'assets/imgs/mockup-black-t-shirt-Front.jpg',\n      description: 'Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro'\n    },\n    {\n      id: 1,\n      productName: 'magasin',\n      title: 'Magasin 2',\n      picture:'assets/imgs/mockup-black-t-shirt-Front.jpg',\n      description: 'Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro'\n    },\n    {\n      id: 2,\n      productName: 'magasin',\n      title: 'Magasin 3',\n      picture:'assets/imgs/Huile_de_noix_de_coco.jpg',\n      description: 'Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro'\n    },\n    {\n      id: 3,\n      productName: 'shop',\n      title: 'Magasin 4',\n      picture:'assets/imgs/Huile_de_noix_de_coco.jpg',\n      description: 'Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro'\n    },\n  ]\n\n  public restaurantList: RestaurantInterface[] = [\n    {\n      id: 0,\n      productName: 'restaurant',\n      title: 'Restaurant 1',\n      picture:'assets/imgs/restaurant-449952_1920.jpg',\n      description: 'Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro',\n      favoriteState: false\n    },\n    {\n      id: 1,\n      productName: 'restaurant',\n      title: 'Restaurant 1',\n      picture:'assets/imgs/restaurant-449952_1920.jpg',\n      description: 'Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro',\n      favoriteState: false\n    },\n    {\n      id: 2,\n      productName: 'restaurant',\n      title: 'Restaurant 3',\n      picture:'assets/imgs/restaurant-449952_1920.jpg',\n      description: 'Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro',\n      favoriteState: false\n    },\n    {\n      id: 3,\n      productName: 'restaurant',\n      title: 'Restaurant 4',\n      picture:'assets/imgs/restaurant-449952_1920.jpg',\n      description: 'Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro',\n      favoriteState: false\n    },\n  ]\n\n  getRecipeList(){\n    return this.recipeList\n  }\n\n  getRestaurantList(){\n    return this.restaurantList\n  }\n\n  getShopList(){\n    return this.shopList\n  }\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/angular/breathVeganFront/src/app/service/vegan-product-list.service.ts b/angular/breathVeganFront/src/app/service/vegan-product-list.service.ts
+--- a/angular/breathVeganFront/src/app/service/vegan-product-list.service.ts	(revision 642df578e83f25caf05c5b1b1d0f5b843947cd2e)
++++ b/angular/breathVeganFront/src/app/service/vegan-product-list.service.ts	(date 1609771786483)
+@@ -1,7 +1,5 @@
+ import { Injectable } from '@angular/core';
+-import { RecipeInterface } from '../models/recipe.interface';
+-import { ShopInterface } from '../models/shop.interface';
+-import { RestaurantInterface } from '../models/restaurant.interface';
++
+ 
+ @Injectable()
+ 
+@@ -9,7 +7,7 @@
+ 
+   constructor() { }
+ 
+-  public recipeList: RecipeInterface[] = [
++  /*public recipeList: RecipeInterface[] = [
+     {
+       id: 0,
+       productName: 'recette',
+@@ -41,10 +39,10 @@
+       picture:'assets/imgs/kisspng-vegetarian-cuisine-leaf-vegetable-side-dish-spicy-shredded-cabbage-5a995ae9122ee5.6192060815199997210745.png',
+       description: 'Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro',
+       favoriteState: false
+-    }, 
++    },
+   ]
+ 
+-  
++
+ 
+   public shopList: ShopInterface[] = [
+     {
+@@ -122,7 +120,7 @@
+ 
+   getShopList(){
+     return this.shopList
+-  }
++  }*/
+ 
+ 
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"33d8532f-5a83-4494-b528-d48b0411627c\" name=\"Default Changelist\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/models/recipe.interface.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/models/recipe.interface.ts\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/models/restaurant.interface.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/models/restaurant.interface.ts\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/models/shop.interface.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/models/shop.interface.ts\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/home/body/body.component.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/home/body/body.component.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/home/body/body.component.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/home/body/body.component.ts\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"dev\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"ProjectId\" id=\"1mOcd7h6T7QMTu99DitDHNDpaGR\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"33d8532f-5a83-4494-b528-d48b0411627c\" name=\"Default Changelist\" comment=\"\" />\n      <created>1609368185173</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1609368185173</updated>\n      <workItem from=\"1609368188851\" duration=\"2064000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"dev\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 642df578e83f25caf05c5b1b1d0f5b843947cd2e)
++++ b/.idea/workspace.xml	(date 1609771755155)
+@@ -3,11 +3,7 @@
+   <component name="ChangeListManager">
+     <list default="true" id="33d8532f-5a83-4494-b528-d48b0411627c" name="Default Changelist" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/models/recipe.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/models/recipe.interface.ts" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/models/restaurant.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/models/restaurant.interface.ts" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/models/shop.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/models/shop.interface.ts" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/home/body/body.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/home/body/body.component.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/home/body/body.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/home/body/body.component.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/service/vegan-product-list.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/service/vegan-product-list.service.ts" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
