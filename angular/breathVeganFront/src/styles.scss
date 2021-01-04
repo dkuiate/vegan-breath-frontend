@@ -18,10 +18,10 @@
     background: #439C1D;
 }
 
-
 .mat-form-field-appearance-outline .mat-form-field-outline {
-          color: #439C1D;
-        }
+    color: #439C1D;
+}
+
 .column-center {
     float: none;
     margin: auto;
@@ -42,4 +42,10 @@ button:focus {
 .no-padding {
     padding: 0;
 }
+
+ /*.mat-form-field-outline-start,
+ .mat-form-field-outline-end {
+    border-radius: 50px !important;
+}*/
+
 
