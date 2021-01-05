@@ -5,6 +5,8 @@ import { AuthGuard } from './apiServices/auth.service';
 import { LogInComponent } from './modules/registration/log-in/log-in.component';
 import { SignupComponent } from './modules/registration/signup/signup.component';
 import { ShopListComponent } from './modules/shop/shop-list/shop-list.component';
+import { ApimapComponent } from './apimap/apimap.component';
+import { AgmCoreModule } from '@agm/core';
 import { VeganDetailsComponent } from '../app/modules/generic-components-module/vegan-details/vegan-details.component';
 import { FavoritesListComponent } from '../app/modules/generic-components-module/favorites-list/favorites-list.component';
 
@@ -13,7 +15,7 @@ import { FavoritesListComponent } from '../app/modules/generic-components-module
 const routes: Routes = [
 
   {
-    path:'signup',
+    path: 'signup',
     component: SignupComponent
   },
 
@@ -32,38 +34,40 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path:'shopList',
+    path: 'map',
+    component: ApimapComponent
+  },
+  {
+    path: 'shopList',
     loadChildren: () => import('./modules/shop/shop.module')
     .then(mod => mod.ShopModule),
   },
   {
-    path:'restaurantsList',
+    path: 'restaurantsList',
     loadChildren: () => import('./modules/restaurants/restaurants.module')
     .then(mod => mod.RestaurantsModule),
     canActivate: [AuthGuard]
   },
   {
-    path:'resteurants',
+    path: 'resteurants',
     loadChildren: './modules/restaurants/restaurants-routing.module#RestaurantsRoutingModule'
   },
-
   {
-    path: 'details/:id/:title', 
+    path: 'details/:id/:title',
     component: VeganDetailsComponent
   },
-
   {
-    path: 'favoriteList', 
+    path: 'favoriteList',
     component: FavoritesListComponent
   }
 ];
 
 @NgModule({
-  imports: 
+  imports:
   [RouterModule.forRoot(routes, {
     preloadingStrategy: PreloadAllModules
   })],
-  exports: [RouterModule],
+  exports: [RouterModule, AgmCoreModule],
   providers:[]
 })
 

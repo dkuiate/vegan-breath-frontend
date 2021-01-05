@@ -22,6 +22,7 @@ export class FormControlService {
                                                       Validators.minLength(5),
                                                       FormControlService.patternValidator(/\d/, { hasNumber: true }),
                                                      FormControlService.patternValidator(/[A-Z]/, {hasCapitalCase: true })])),
+
     confirmPassword: new FormControl(['', Validators.required, FormControlService.passwordMatchValidator]),
   });
 
@@ -64,11 +65,13 @@ export class FormControlService {
     }
   }
 
+
   addingItemForm: FormGroup = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.minLength(5)]),
     image: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required, Validators.minLength(20)]),
   });
+
 
 }
 

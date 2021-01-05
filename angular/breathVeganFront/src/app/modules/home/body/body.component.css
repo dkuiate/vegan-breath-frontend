@@ -3,6 +3,29 @@
    width: 100%;
 }
 
+.search-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -226px;
+    right: -170px;
+}
+
+.search-field mat-form-field {
+  width: 577px;
+  z-index: 1;
+}
+
+.search-field button {
+    height: 43px;
+    width: 167px;
+    border-radius: 50px;
+    background-color: #439C1D;
+    color: white;
+}
+
 .last-news-title h1 {
     font-size: 48px;
     font-family: 'Montserrat', sans-serif;
