@@ -3,7 +3,7 @@ export class RestaurantModel {
   title: string;
   email: string;
   description: string;
-  created_at: Date;
+  created_at: string;
   picture: any;
   favoriteState: boolean;
 }

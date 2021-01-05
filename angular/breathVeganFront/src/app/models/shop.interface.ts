@@ -1,9 +1,10 @@
 export class ShopModel {
   id: number;
   title: string;
+  email: string;
   description: string;
+  created_at: string;
   picture: any;
-  email: any;
-  created_at: Date;
-  address: string;
+  favoriteState: boolean;
+  addresse: string;
 }

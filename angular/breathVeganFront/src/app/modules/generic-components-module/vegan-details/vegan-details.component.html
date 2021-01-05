@@ -70,7 +70,7 @@
         <div class="group-button">
           <div class="row">
             <div class="col-lg-4 col-4">
-              <button [ngStyle]="{'background-color': pda.favoriteState === false ? '#439C1D' : '#767676'}" mat-raised-button (click)="favoriteManager(pda.id, pda.title, pda.favoriteState)"><img src="assets/imgs/star.svg">Favoris</button>
+              <button mat-raised-button (click)="favoriteManager(pda.id, pda.title, pda.favoriteState)"><img src="assets/imgs/star.svg">Favoris</button>
             </div>
             <div class="col-lg-4 col-4">
               <button mat-raised-button><img src="assets/imgs/share.svg">Partager</button>

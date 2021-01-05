@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { RegistrationModule } from './modules/registration/registration.module'; 
+import { RegistrationModule } from './modules/registration/registration.module';
 import { HomeModule } from './modules/home/home.module';
 import { ShopModule } from './modules/shop/shop.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -25,9 +25,9 @@ import { VeganProductListService } from './service/vegan-product-list.service';
 //Material
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card'; 
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'; 
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 
@@ -37,9 +37,9 @@ import { MatMenuModule } from '@angular/material/menu';
 //import { BodyComponent } from './body/body.component';
  const routes: Routes = [
   // { path: '', redirectTo: '/first', pathMatch: 'full' },
-  { 
-    path: '', 
-    component: BodyComponent 
+  {
+    path: '',
+    component: BodyComponent
   },
  /* { path: 'first', component: Component1Component } ,
   { path: 'second', component: Component2Component },
@@ -49,6 +49,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { from } from 'rxjs';
 import { AuthGuard, AuthInterceptor, AuthService } from './apiServices/auth.service';
 import { PopUpComponent } from './modules/popup/pop-up/pop-up.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -56,7 +57,7 @@ import { PopUpComponent } from './modules/popup/pop-up/pop-up.component';
   declarations: [
     AppComponent,
     VeganCardsComponent,
-    PopUpComponent, 
+    PopUpComponent,
     BodyComponent
   ],
   imports: [
@@ -82,7 +83,8 @@ import { PopUpComponent } from './modules/popup/pop-up/pop-up.component';
     MatCardModule,
     GenericComponentsModule,
     NavigationModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule
   ],
   providers: [
     ShopServiceService,
@@ -98,6 +100,6 @@ import { PopUpComponent } from './modules/popup/pop-up/pop-up.component';
   ],
   bootstrap: [AppComponent],
   entryComponents: [PopUpComponent]
-  
+
 })
 export class AppModule { }

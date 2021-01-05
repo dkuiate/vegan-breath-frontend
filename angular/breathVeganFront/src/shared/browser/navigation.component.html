@@ -5,7 +5,7 @@
       <button mat-button class="{{link.style}}" *ngIf="link.label === 'Accueil' || link.label === 'Connexion'" routerLink="link.path" >{{link.label}}</button>
       <button mat-button class="{{link.style}}" [matMenuTriggerFor]="homeMenu" *ngIf="link.label !== 'Accueil' && link.label !== 'Connexion'">{{link.label}}<mat-icon>arrow_drop_down</mat-icon></button>
       <mat-menu class="custom-mat-menu" #homeMenu="matMenu" yPosition="above">
-        <button mat-menu-item [routerLink]="link.subPath" (click)= onAdd()>{{link.subLabel}}</button>
+        <button mat-menu-item [routerLink]="link.subPath" (click)= onAdd($event)>{{link.subLabel}}</button>
         <button mat-menu-item [routerLink]="link.subPath2" >{{link.subLabel2}}</button>
       </mat-menu>
     </div>
