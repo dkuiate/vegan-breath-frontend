@@ -10,6 +10,7 @@ export class ApimapComponent implements OnInit {
 
   lat = 48.8534;
   lng = 2.3488;
+  googleMapType = 'satellite';
 
   constructor() { }
 

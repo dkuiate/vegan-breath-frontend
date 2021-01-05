@@ -5,6 +5,8 @@ import { AuthGuard } from './apiServices/auth.service';
 import { LogInComponent } from './modules/registration/log-in/log-in.component';
 import { SignupComponent } from './modules/registration/signup/signup.component';
 import { ShopListComponent } from './modules/shop/shop-list/shop-list.component';
+import { ApimapComponent } from './apimap/apimap.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 const routes: Routes = [
@@ -24,11 +26,15 @@ const routes: Routes = [
     component: ShopListComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: 'map',
+    component: ApimapComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule,AgmCoreModule],
   providers:[]
 })
 

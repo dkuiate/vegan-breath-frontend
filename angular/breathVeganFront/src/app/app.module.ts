@@ -23,6 +23,7 @@ import { AgmCoreModule } from '@agm/core';
 import { from } from 'rxjs';
 import { AuthGuard, AuthInterceptor, AuthService } from './apiServices/auth.service';
 import { ApimapComponent } from './apimap/apimap.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { ApimapComponent } from './apimap/apimap.component';
     MatMenuModule,
     MatIconModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAABqwkqj04XsQ01mQ2X7m-GYDmjtoPLqk'
+      apiKey: 'AIzaSyAABqwkqj04XsQ01mQ2X7m-GYDmjtoPLqk',
+      libraries: ['places']
     })
   ],
   providers: [
