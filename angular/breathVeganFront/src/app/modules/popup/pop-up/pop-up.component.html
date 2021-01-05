@@ -1,27 +1,37 @@
 <div fxLayoutAlign="center center" fxFlexFill class="main-div">
- <form>
-    <mat-toolbar class="toolbar-popup">Ajouter un magasin</mat-toolbar>
+
+ <form [formGroup] = "formControlService.addingItemForm" (submit)="createElement()">
+    <mat-toolbar class="toolbar-popup">Ajouter {{element}}</mat-toolbar><br>
     <div  fxLayout="column" fxLayoutAlign="space-between stretch">
-    <mat-form-field appearance="outline" >
-        <mat-hint>Titre</mat-hint>
-        <mat-label>Insérer un titre</mat-label>
-        <input matInput placeholder="Placeholder">
-      </mat-form-field>
-        
-      <mat-form-field appearance="outline">
-        <mat-hint>Image</mat-hint>
-        <mat-label>Insérer une image</mat-label>
-        <input matInput placeholder="Placeholder">
-        <mat-icon matSuffix>insert_photo</mat-icon>
+        <mat-form-field>
+            <mat-hint>Titre*</mat-hint>
+            <mat-label>Insérer un titre</mat-label>
+            <input #title matInput placeholder="Placeholder" formControlName="title" (keyup)="addTitle($event)">
+            <mat-error>Ce champ est obligatoire</mat-error>
+          </mat-form-field>
+
+          <mat-form-field >
+            <mat-hint>Image*</mat-hint>
+            <mat-label>Insérer une image</mat-label>
+            <input #image matInput placeholder="Placeholder" formControlName="image" type="url">
+            <mat-error>Ce champ est obligatoire</mat-error>
+            <mat-icon matSuffix>insert_photo</mat-icon>
+          </mat-form-field>
+
+         <mat-form-field >
+        <mat-label>Insérer une description</mat-label>
+        <textarea #description matInput formControlName="description" (keyup)="addDescription($event)"></textarea>
+           <mat-error>Descrition trop courte, min 20 carat</mat-error>
+        <mat-hint>Description*</mat-hint>
       </mat-form-field>
 
-     <mat-form-field appearance="outline">
-    <mat-label>Insérer une description</mat-label>
-    <textarea matInput></textarea>
-    <mat-hint>Description</mat-hint>
-  </mat-form-field>
+      <div class="example-button-row">
+        <button mat-button (click) = "createElement()">Ajouter</button>
+        <button mat-button (click)="discard()" color="warn">Annuler</button>
+      </div>
+
     </div>
 
-        
+
 </form>
 </div>
