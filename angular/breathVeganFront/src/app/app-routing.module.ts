@@ -15,7 +15,7 @@ import { FavoritesListComponent } from '../app/modules/generic-components-module
 const routes: Routes = [
 
   {
-    path:'signup',
+    path: 'signup',
     component: SignupComponent
   },
 
@@ -38,36 +38,36 @@ const routes: Routes = [
     component: ApimapComponent
   },
   {
-    path:'shopList',
+    path: 'shopList',
     loadChildren: () => import('./modules/shop/shop.module')
     .then(mod => mod.ShopModule),
   },
   {
-    path:'restaurantsList',
+    path: 'restaurantsList',
     loadChildren: () => import('./modules/restaurants/restaurants.module')
     .then(mod => mod.RestaurantsModule),
     canActivate: [AuthGuard]
   },
   {
-    path:'resteurants',
+    path: 'resteurants',
     loadChildren: './modules/restaurants/restaurants-routing.module#RestaurantsRoutingModule'
   },
   {
-    path: 'details/:id/:title', 
+    path: 'details/:id/:title',
     component: VeganDetailsComponent
   },
   {
-    path: 'favoriteList', 
+    path: 'favoriteList',
     component: FavoritesListComponent
   }
 ];
 
 @NgModule({
-  imports: 
+  imports:
   [RouterModule.forRoot(routes, {
     preloadingStrategy: PreloadAllModules
   })],
-  exports: [RouterModule,AgmCoreModule],
+  exports: [RouterModule, AgmCoreModule],
   providers:[]
 })
 

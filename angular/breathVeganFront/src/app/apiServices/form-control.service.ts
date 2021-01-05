@@ -22,10 +22,10 @@ export class FormControlService {
                                                       Validators.minLength(5),
                                                       FormControlService.patternValidator(/\d/, { hasNumber: true }),
                                                      FormControlService.patternValidator(/[A-Z]/, {hasCapitalCase: true })])),
-                    
+
     confirmPassword: new FormControl(['', Validators.required, FormControlService.passwordMatchValidator]),
-     
-  
+
+
   });
 
 
@@ -59,11 +59,11 @@ export class FormControlService {
 
   static passwordMatchValidator(control: AbstractControl) {
     const password: string = control.get('password').value;
-    const confirmPassword: string = control.get('confirmPassword').value; 
+    const confirmPassword: string = control.get('confirmPassword').value;
     if (password !== confirmPassword) {
       control.get('confirmPassword').setErrors({ NoPassswordMatch: true });
     }
-  } 
+  }
 }
 
 
