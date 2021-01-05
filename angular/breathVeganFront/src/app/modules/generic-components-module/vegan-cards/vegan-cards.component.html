@@ -1,0 +1,32 @@
+<div class="vegan-card-list">
+  <mat-card class="vegan-card" *ngFor="let vegan of veganInformations">
+    <mat-card-header class="vegan-card-header">
+      <mat-card-title>{{vegan.title}}</mat-card-title>
+      <button mat-icon-button (click)="changeFavoriteState(vegan)">
+        <mat-icon
+        *ngIf="vegan.favoriteState"
+         aria-label="Example icon-button with a heart icon">
+         favorite
+       </mat-icon>
+
+       <mat-icon 
+       *ngIf="!vegan.favoriteState"
+       aria-label="Example icon-button with a heart icon">
+       favorite_border
+       </mat-icon>
+      </button>
+    </mat-card-header>
+    <div class="vegan-card-picture">
+      <img src="{{vegan.picture}}">
+  </div>
+    <mat-card-content>
+      <div class="vegan-card-short-description">
+        <p>{{vegan.description}} </p>
+    </div>
+    </mat-card-content>
+    <mat-card-actions class="vegan-card-see-description-button">
+      <button mat-raised-button (click)="selectedVegan(vegan)"> Voir détails</button>
+     
+    </mat-card-actions>
+  </mat-card>
+</div>
