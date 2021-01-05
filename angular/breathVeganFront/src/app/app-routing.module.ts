@@ -5,10 +5,8 @@ import { AuthGuard } from './apiServices/auth.service';
 import { LogInComponent } from './modules/registration/log-in/log-in.component';
 import { SignupComponent } from './modules/registration/signup/signup.component';
 import { ShopListComponent } from './modules/shop/shop-list/shop-list.component';
-
 import { ApimapComponent } from './apimap/apimap.component';
 import { AgmCoreModule } from '@agm/core';
-
 import { VeganDetailsComponent } from '../app/modules/generic-components-module/vegan-details/vegan-details.component';
 import { FavoritesListComponent } from '../app/modules/generic-components-module/favorites-list/favorites-list.component';
 
@@ -37,7 +35,7 @@ const routes: Routes = [
   },
   {
     path: 'map',
-    component: 'ApimapComponent'
+    component: ApimapComponent
   },
   {
     path:'shopList',
@@ -65,13 +63,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule,AgmCoreModule],
   imports: 
   [RouterModule.forRoot(routes, {
     preloadingStrategy: PreloadAllModules
   })],
-  exports: [RouterModule],
+  exports: [RouterModule,AgmCoreModule],
   providers:[]
 })
 
