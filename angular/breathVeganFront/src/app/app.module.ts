@@ -34,8 +34,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { from } from 'rxjs';
 import { PopUpComponent } from './modules/popup/pop-up/pop-up.component';
 
-
-
 // import { BodyComponent } from './body/body.component';
  const routes: Routes = [
   // { path: '', redirectTo: '/first', pathMatch: 'full' },
@@ -47,15 +45,6 @@ import { PopUpComponent } from './modules/popup/pop-up/pop-up.component';
   { path: 'second', component: Component2Component },
   { path: 'third', component: Component3Component }*/
 ];
-
-
-
-
-
-
-
-
-
 
 @NgModule({
   declarations: [

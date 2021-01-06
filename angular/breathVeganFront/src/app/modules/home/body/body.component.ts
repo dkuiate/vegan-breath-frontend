@@ -3,6 +3,7 @@ import {Subscription} from 'rxjs';
 import {RestaurantsService} from '../../../apiServices/restaurants.service';
 import {RecepeeService} from '../../../apiServices/recepee.service';
 import {ShopsService} from '../../../apiServices/shops.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-body',
@@ -26,7 +27,8 @@ export class BodyComponent implements OnInit {
 
   constructor(private restaurantService: RestaurantsService,
               private recepeeService: RecepeeService,
-              private shopsService: ShopsService) { }
+              private shopsService: ShopsService,
+              private router: Router) { }
 
   ngOnInit(): void {
     // restaurants
@@ -70,5 +72,9 @@ export class BodyComponent implements OnInit {
         console.log('shopList', this.shopList);
       }
     );
+  }
+
+  dispayDistributionAround() {
+     this.router.navigate(['/map'])
   }
 }

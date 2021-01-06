@@ -34,9 +34,6 @@ public detailData: any [];
     });
   }
 
-
-
-
   getCurrentDetails(id: string, title: string): Observable<any> {
   const newTitle = this.veganDetailsService.changeTitle(title);
   const productDetailsList = this.veganDetailsService.getProductDetailsList();
