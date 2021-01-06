@@ -15,6 +15,10 @@ export class ShopsService {
     return this.httpClient.get(this.apiRoot.concat('api/vegan/shops'));
   }
 
+  getById(id: number){
+    return this.httpClient.get(this.apiRoot.concat(`api/vegan/shopDetails/${id}/`));
+  }
+
   addShops(title: string, email: string, picture: string, description: string) {
     return this.httpClient.post(
       this.apiRoot.concat('api/vegan/addShop'),

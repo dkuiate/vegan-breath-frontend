@@ -13,17 +13,19 @@ import { VeganDetailsService } from '../../../service/vegan-details.service';
 export class VeganDetailsComponent implements OnInit {
 productDetailsArray: any[] = [];
 
-  constructor(private activatedRoute: ActivatedRoute, private favoriteManagerService: FavoriteManagerService, private veganDetailsService: VeganDetailsService) { }
+  constructor(private activatedRoute: ActivatedRoute,
+              private favoriteManagerService: FavoriteManagerService,
+              private veganDetailsService: VeganDetailsService) { }
 
   ngOnInit(): void {
     this.onDisplayDetails();
   }
-  
+
   onDisplayDetails() {
     this.activatedRoute.paramMap
     .subscribe((res: any) =>{
       this.productDetailsArray = [];
-       const currentDetailsResult = this.getCurrentDetails(res.params.id, res.params.title)
+       const currentDetailsResult = this.getCurrentDetails(res.params.id, res.params.title);
        this.productDetailsArray.push(currentDetailsResult);
     });
   }
@@ -36,8 +38,10 @@ productDetailsArray: any[] = [];
   const productDetailsList = this.veganDetailsService.getProductDetailsList();
     for(const product of productDetailsList) {
         const idNumber = this.convertStringToInt(id);
+      console.log('veganif', newTitle, product.productDetails);
       if(newTitle === product.productDetails) {
-        return product[newTitle].find(p => p.id == idNumber)
+
+        return product[newTitle].find(p => p.id == idNumber);
       }
     }
   }
@@ -64,14 +68,14 @@ productDetailsArray: any[] = [];
       productDetailsCurrent.favoriteState = !productDetailsCurrent.favoriteState
       if(productDetailsCurrent.favoriteState === true) {
         this.favoriteManagerService.setFavoriteStorage({
-          id: productDetailsCurrent.id, 
-          title: productDetailsCurrent.title, 
+          id: productDetailsCurrent.id,
+          title: productDetailsCurrent.title,
           favoriteState: productDetailsCurrent.favoriteState
         });
       } else {
         this.favoriteManagerService.setFavoriteStorage({
-          id: productDetailsCurrent.id, 
-          title: productDetailsCurrent.title, 
+          id: productDetailsCurrent.id,
+          title: productDetailsCurrent.title,
           favoriteState: productDetailsCurrent.favoriteState
         });
         this.veganDetailsService.favoritesListResult.splice(productDetailsCurrent.id, 1);
