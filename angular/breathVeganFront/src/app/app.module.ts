@@ -47,8 +47,6 @@ import { PopUpComponent } from './modules/popup/pop-up/pop-up.component';
   { path: 'third', component: Component3Component }*/
 ];
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
