@@ -103,3 +103,15 @@
 .back-to-home {
   margin: 66px 0 20px 0;
 }
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}

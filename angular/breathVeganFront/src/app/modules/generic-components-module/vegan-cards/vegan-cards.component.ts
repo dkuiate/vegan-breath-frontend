@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { VeganDetailsService } from '../../../service/vegan-details.service';
 import { FavoriteManagerService } from '../../../service/favorites-manager.services';
 import {RestaurantsService} from "../../../apiServices/restaurants.service";
+import {CommonService} from "../../../apiServices/common.service";
 
 @Component({
   selector: 'app-vegan-cards',
@@ -14,12 +15,13 @@ export class VeganCardsComponent implements OnInit {
 @Input() veganInformations;
 favoriteSetting: any;
 favoriteState: boolean;
-itemDetail: any[] = [];
+itemDetail: object;
 
   constructor(private router: Router,
               private veganDetailsService: VeganDetailsService,
               private favoriteManagerService: FavoriteManagerService,
-              private restaurantService: RestaurantsService) {}
+              private restaurantService: RestaurantsService,
+              private commonService: CommonService) {}
 
   ngOnInit(): void {
 
@@ -28,9 +30,10 @@ itemDetail: any[] = [];
   showDetails(vegan: any): void {
     this.restaurantService.getById(vegan.id).subscribe(
       (data) => {
-        this.itemDetail.push(data);
+        this.itemDetail = data;
+        this.commonService.setItemDetail(this.itemDetail);
         console.log('data', data);
-        console.log('veganinformation',this.veganInformations);
+        console.log('veganinformation', this.veganInformations);
       },
     (error) => {
         console.log('erreur sur details', error);

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject, of } from 'rxjs';
 import { FavoriteManagerService } from '../../../service/favorites-manager.services';
 import { VeganDetailsService } from '../../../service/vegan-details.service';
+import {CommonService} from '../../../apiServices/common.service';
 
 @Component({
   selector: 'app-vegan-details',
@@ -12,13 +13,16 @@ import { VeganDetailsService } from '../../../service/vegan-details.service';
 
 export class VeganDetailsComponent implements OnInit {
 productDetailsArray: any[] = [];
+public detailData: any [];
 
   constructor(private activatedRoute: ActivatedRoute,
               private favoriteManagerService: FavoriteManagerService,
-              private veganDetailsService: VeganDetailsService) { }
+              private veganDetailsService: VeganDetailsService,
+              private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.onDisplayDetails();
+    this.detailData = this.commonService.getItemDetail();
   }
 
   onDisplayDetails() {
