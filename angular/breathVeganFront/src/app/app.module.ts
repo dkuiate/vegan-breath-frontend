@@ -18,6 +18,7 @@ import { VeganCardsComponent } from './modules/generic-components-module/vegan-c
 import { BodyComponent } from './modules/home/body/body.component';
 import { ShopServiceService } from './apiServices/shop-service.service';
 import { FormControlService } from './apiServices/form-control.service';
+import {ReactiveFormsModule} from '@angular/forms';
 //Material
 
 import { MatInputModule } from '@angular/material/input';
@@ -33,9 +34,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { from } from 'rxjs';
 import { PopUpComponent } from './modules/popup/pop-up/pop-up.component';
 
-
-
-//import { BodyComponent } from './body/body.component';
+// import { BodyComponent } from './body/body.component';
  const routes: Routes = [
   // { path: '', redirectTo: '/first', pathMatch: 'full' },
   {
@@ -81,7 +80,8 @@ import { PopUpComponent } from './modules/popup/pop-up/pop-up.component';
     MatCardModule,
     GenericComponentsModule,
     NavigationModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule
   ],
   providers: [
     ShopServiceService,

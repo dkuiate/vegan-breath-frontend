@@ -9,7 +9,7 @@
          favorite
        </mat-icon>
 
-       <mat-icon 
+       <mat-icon
        *ngIf="!vegan.favoriteState"
        aria-label="Example icon-button with a heart icon">
        favorite_border
@@ -25,8 +25,8 @@
     </div>
     </mat-card-content>
     <mat-card-actions class="vegan-card-see-description-button">
-      <button mat-raised-button (click)="selectedVegan(vegan)"> Voir détails</button>
-     
+      <button mat-raised-button (click)="showDetails(vegan)"> Voir détails</button>
+
     </mat-card-actions>
   </mat-card>
 </div>

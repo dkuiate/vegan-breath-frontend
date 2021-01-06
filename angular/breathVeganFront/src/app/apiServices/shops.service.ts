@@ -15,10 +15,14 @@ export class ShopsService {
     return this.httpClient.get(this.apiRoot.concat('api/vegan/shops'));
   }
 
-  /*createRestaurants(title: string, description: string, email: string, created_at: Date) {
+  getById(id: number){
+    return this.httpClient.get(this.apiRoot.concat(`api/vegan/shopDetails/${id}`));
+  }
+
+  addShops(title: string, email: string, picture: string, description: string) {
     return this.httpClient.post(
-      this.apiRoot.concat('addRestaurants/'),
-      { title, description, email, created_at }
+      this.apiRoot.concat('api/vegan/addShop'),
+      {title, email, picture, description }
     );
-  }*/
+  }
 }

@@ -1,7 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { PopUpComponent } from '../../app/modules/popup/pop-up/pop-up.component';
+import {CommonService} from '../../app/apiServices/common.service';
+import {element} from "protractor";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-browser',
@@ -11,13 +14,14 @@ import { PopUpComponent } from '../../app/modules/popup/pop-up/pop-up.component'
 
 export class NavigationComponent implements OnInit {
 
-navLinks: any[];
-activeLinkIndex = -1;
-currentPath: string;
+  navLinks: any[];
+  activeLinkIndex = -1;
+  currentPath: string;
 
 
   constructor(private router: Router,
-              private dialog: MatDialog ) { 
+              private dialog: MatDialog,
+              private commonService: CommonService) {
 
     this.navLinks = [
       {
@@ -28,7 +32,7 @@ currentPath: string;
       },
       {
         label: 'Recette',
-        subLabel: 'Ajouter une recette', 
+        subLabel: 'Ajouter une recette',
         // subPath: '/add_recipe',
         subLabel2: 'Voir liste des recettes',
         subPath2: './see_recipes_list',
@@ -37,7 +41,7 @@ currentPath: string;
       },
       {
         label: 'Magasin',
-        subLabel: 'Ajouter un magasin', 
+        subLabel: 'Ajouter un magasin',
         // subPath: './add_shop',
         subLabel2: 'Voir liste des magasins',
         subPath2: './see_shops_list',
@@ -46,7 +50,7 @@ currentPath: string;
       },
       {
         label: 'Restaurant',
-        subLabel: 'Ajouter un restaurant', 
+        subLabel: 'Ajouter un restaurant',
         // subPath: './add_restaurant',
         subLabel2: 'Voir liste des restaurants',
         subPath2: './see_restaurants_list',
@@ -61,28 +65,38 @@ currentPath: string;
       },
     ];
   }
-  
+
   ngOnInit(): void {
-    this.router.events.subscribe((res) =>{
+    this.router.events.subscribe((res) => {
        this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => {
-        if(tab.path !== undefined && tab.path.charAt(0) === "."){
+        if (tab.path !== undefined && tab.path.charAt(0) === '.'){
           return tab.path;
         } else {
-          return {subLabelIndex: tab.subPath, subLabelIndex2: tab.subPath2}
+          return {subLabelIndex: tab.subPath, subLabelIndex2: tab.subPath2};
         }
        }));
-    })
+    });
+    this.commonService.setListData(this.navLinks);
   }
 
-  onAdd(){
-    console.log('you right');
+  onAdd(event: any): void{
+    if (event.target.textContent === 'Ajouter un restaurant'){
+      this.commonService.setElement('un restaurant');
+    }
+    if (event.target.textContent === 'Ajouter un magasin'){
+      this.commonService.setElement('un magasin');
+    }
+    if (event.target.textContent === 'Ajouter une recette'){
+      this.commonService.setElement('une recette');
+    }
+    console.log(event.target);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
-    dialogConfig.height = "589px"
-    dialogConfig.width = "383px"
+    dialogConfig.height = '589px';
+    dialogConfig.width = '383px';
     this.dialog.open(PopUpComponent, dialogConfig);
-   
+
   }
 
 

@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FavoritesListComponent } from '../generic-components-module/favorites-list/favorites-list.component';
 import { FavoriteManagerService } from '../../service/favorites-manager.services';
 import { VeganDetailsService } from '../../service/vegan-details.service';
+import {MatCardModule} from "@angular/material/card";
 
 const routes: Routes = [
     {path: 'recipeDetails/:id/:title', component: VeganDetailsComponent},
@@ -18,7 +19,7 @@ const routes: Routes = [
     {path: 'restaurantDetails/:id/:title', component: VeganDetailsComponent},
 ];
 
-  
+
 @NgModule({
     declarations: [
         GenericComponent,
@@ -32,12 +33,13 @@ const routes: Routes = [
         MatDividerModule,
         MatButtonModule,
         MatIconModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes),
+        MatCardModule
     ],
     providers: [FavoriteManagerService, VeganDetailsService],
     exports: [
         GenericComponent,
     ],
   })
-  
+
   export class GenericComponentsModule { }
