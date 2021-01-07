@@ -33,7 +33,7 @@ export class NavigationComponent implements OnInit {
       {
         label: 'Recette',
         subLabel: 'Ajouter une recette',
-        // subPath: '/add_recipe',
+        dropDown: 'recipe',
         subLabel2: 'Voir liste des recettes',
         subPath2: './see_recipes_list',
         style: 'button-style',
@@ -42,7 +42,7 @@ export class NavigationComponent implements OnInit {
       {
         label: 'Magasin',
         subLabel: 'Ajouter un magasin',
-        // subPath: './add_shop',
+        dropDown: 'shop',
         subLabel2: 'Voir liste des magasins',
         subPath2: './see_shops_list',
         style: 'button-style',
@@ -51,7 +51,7 @@ export class NavigationComponent implements OnInit {
       {
         label: 'Restaurant',
         subLabel: 'Ajouter un restaurant',
-        // subPath: './add_restaurant',
+        dropDown: 'restaurant',
         subLabel2: 'Voir liste des restaurants',
         subPath2: './see_restaurants_list',
         style: 'button-style',
