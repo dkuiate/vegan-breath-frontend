@@ -8,16 +8,7 @@
                 <div class="search-field">
                     <mat-form-field appearance="outline">
                         <mat-label>Location des distributions</mat-label>
-                        <input type="text"
-                               placeholder="Entrer une ville ou region"
-                               matInput
-                               [formControl]="searchControl"
-                               (keyup.enter)="getText($event)">
-                      <!--mat-autocomplete #auto="matAutocomplete">
-                        <mat-option *ngFor="let option of shopList | async" [value]="option">
-                          {{option}}
-                        </mat-option>
-                      </mat-autocomplete-->
+                        <input matInput placeholder="Entrer une ville ou region">
                     </mat-form-field>
                     <button mat-raised-button (click)="dispayDistributionAround()">Carte</button>
                 </div>

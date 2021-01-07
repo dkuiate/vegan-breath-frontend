@@ -54,7 +54,7 @@ export class PopUpComponent implements OnInit, OnChanges{
         this.restaurantService.addRestaurant(this.elementCreation.title, this.elementCreation.email, this.elementCreation.picture, this.elementCreation.description).subscribe(
           (data: RestaurantModel) => {
             this.elementCreation = data;
-            window.alert('restaurant bien ajouté');
+            window.alert('votre restaurant sera ajouté après validation admin');
             console.log('createdData', data);
           },
           (error) => {
@@ -72,7 +72,7 @@ export class PopUpComponent implements OnInit, OnChanges{
       this.shopService.addShops(this.elementCreation.title, this.elementCreation.email, this.elementCreation.picture, this.elementCreation.description).subscribe(
         (data: ShopModel) => {
           this.shopCreation = data;
-          window.alert('Magasin bien ajouté');
+          window.alert('votre magasin sera ajouté après validation admin');
           console.log('createdData', data);
         },
         (error) => {
@@ -116,7 +116,7 @@ export class PopUpComponent implements OnInit, OnChanges{
       this.recepeeService.addRecepee(this.elementCreation.title, this.elementCreation.email, this.elementCreation.picture, this.elementCreation.description).subscribe(
         (data: RestaurantModel) => {
           this.elementCreation = data;
-          window.alert('restaurant bien ajouté');
+          window.alert('votre recette sera ajouté après validation admin');
           console.log('createdData', data);
         },
         (error) => {

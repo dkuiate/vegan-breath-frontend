@@ -1,5 +1,4 @@
 .banner img {
-   height: 820px;
    width: 100%;
 }
 
@@ -86,7 +85,7 @@ mat-divider {
 
 .short-description p {
   margin: 15px 0 0 0;
-  font-family: 'Montserrat',sans-serif;  
+  font-family: 'Montserrat',sans-serif;
   font-size: 14px;
 }
 
