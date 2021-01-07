@@ -1,0 +1,40 @@
+.navigation-container .mat-toolbar {
+    background: linear-gradient(90deg, #FFD484 53.25%, #EDEFF1 53.26%, #EDEFF1 99.99%, #EDEFF1 100%);
+}
+
+.navigation-container span {
+    margin-right: 30px;
+    color: #439C1D;
+    font-weight: 700;
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.group-menu-button {
+    margin-left: 10px;
+}
+
+.group-menu-button button {
+    color: #439C1D;
+    font-weight: 500;
+    border-radius: 50px;
+    border: 1px solid #439C1D;
+    outline: none !important;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.button-style {
+    background: #FFD484 !important;
+}
+
+.custom-button mat-icon {
+    position: relative;
+    top: 2px;
+}
+
+.group-menu-button:nth-child(7) {
+    position: absolute;
+    right: 10px;
+}
+
+

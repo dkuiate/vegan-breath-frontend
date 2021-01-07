@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class ShopServiceService {
 
-  private apiRoot = 'http://localhost:90/';
+  private apiRoot = 'https://vegan-breath.herokuapp.com/';
 
   constructor(
     private httpClient: HttpClient) { }
@@ -17,7 +17,7 @@ export class ShopServiceService {
       return this.httpClient.get(this.apiRoot.concat('shop-item'));
     }
 
-    createShopItem(name: string, description: string,town: string, zipCode: string) {
+    createShopItem(name: string, description: string, town: string, zipCode: string) {
       return this.httpClient.post(
         this.apiRoot.concat('shopping-item/'),
         { name, description, town, zipCode }

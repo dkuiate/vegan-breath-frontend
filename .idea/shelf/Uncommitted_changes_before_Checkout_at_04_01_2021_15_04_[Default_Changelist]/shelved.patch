@@ -1,0 +1,612 @@
+Index: angular/breathVeganFront/src/app/modules/home/body/body.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { Component, OnInit } from '@angular/core';\nimport { VeganProductListService } from '../../../service/vegan-product-list.service';\nimport { RecipeInterface } from '../../../models/recipe.interface';\nimport { ShopInterface } from '../../../models/shop.interface';\nimport { RestaurantInterface } from '../../../models/restaurant.interface';\n\n@Component({\n  selector: 'app-body',\n  templateUrl: './body.component.html',\n  styleUrls: ['./body.component.css']\n})\nexport class BodyComponent implements OnInit {\n  recipeListResult: Array<RecipeInterface>;\n  restaurantListResult: Array<RestaurantInterface>;\n  shopListResult: Array<ShopInterface>;\n\n  constructor(private veganProductListService: VeganProductListService) { }\n\n  ngOnInit(): void {\n    this.recipeListResult = this.veganProductListService.getRecipeList();\n    this.restaurantListResult = this.veganProductListService.getRestaurantList();\n    this.shopListResult = this.veganProductListService.getShopList();\n  }\n\n  \n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/angular/breathVeganFront/src/app/modules/home/body/body.component.ts b/angular/breathVeganFront/src/app/modules/home/body/body.component.ts
+--- a/angular/breathVeganFront/src/app/modules/home/body/body.component.ts	(revision a5957f30c111eaacc1b703caf005c38975a02fa5)
++++ b/angular/breathVeganFront/src/app/modules/home/body/body.component.ts	(date 1609768605290)
+@@ -1,8 +1,9 @@
+ import { Component, OnInit } from '@angular/core';
+-import { VeganProductListService } from '../../../service/vegan-product-list.service';
+-import { RecipeInterface } from '../../../models/recipe.interface';
+ import { ShopInterface } from '../../../models/shop.interface';
+-import { RestaurantInterface } from '../../../models/restaurant.interface';
++import {RestaurantsService} from '../../../apiServices/restaurants.service';
++import {Observable, Subscription} from 'rxjs';
++import {RecepeeService} from '../../../apiServices/recepee.service';
++import {ShopsService} from "../../../apiServices/shops.service";
+ 
+ @Component({
+   selector: 'app-body',
+@@ -10,18 +11,67 @@
+   styleUrls: ['./body.component.css']
+ })
+ export class BodyComponent implements OnInit {
+-  recipeListResult: Array<RecipeInterface>;
+-  restaurantListResult: Array<RestaurantInterface>;
+-  shopListResult: Array<ShopInterface>;
++
++  // tslint:disable-next-line:ban-types
++  public restaurantList: Object;
+ 
+-  constructor(private veganProductListService: VeganProductListService) { }
++  // tslint:disable-next-line:ban-types
++  public recepeeList: Object;
++
++  // tslint:disable-next-line:ban-types
++  public shopList: Object;
++
++  subscription: Subscription;
++  recepeeSubscription: Subscription;
++  shopSubcription: Subscription;
++
++
++  constructor(private restaurantService: RestaurantsService,
++              private recepeeService: RecepeeService,
++              private shopsService: ShopsService) { }
+ 
+   ngOnInit(): void {
+-    this.recipeListResult = this.veganProductListService.getRecipeList();
+-    this.restaurantListResult = this.veganProductListService.getRestaurantList();
+-    this.shopListResult = this.veganProductListService.getShopList();
+-  }
++    // restaurants
++    this.subscription = this.restaurantService.getRestaurants().subscribe(
++      (restaurantList) => {
++        this.restaurantList = restaurantList;
++      },
++      (error) => {
++        window.alert('Impossible dafficher les restaurants');
++        console.log('errror on loading restaurants', error);
++      },
++      () => {
++        console.log('restaurantsList', this.restaurantList);
++      }
++    );
++    console.log('restaurants', this.restaurantList);
+ 
+-  
++    // Recepee
++    this.recepeeSubscription = this.recepeeService.getRecepee().subscribe(
++      (recepeeList) => {
++        this.recepeeList = recepeeList;
++      },
++      (error) => {
++        window.alert('impossible dafficher les recettes');
++        console.log(error);
++      },
++      () => {
++        console.log('recepeeList', this.recepeeList);
++      }
++    );
++
++    this.shopSubcription = this.shopsService.getShops().subscribe(
++      (shopList) => {
++        this.shopList = shopList;
++      },
++      (error) => {
++        window.alert('impossible dafficher les boutiques');
++        console.log(error);
++      },
++      () => {
++        console.log('shopList', this.shopList);
++      }
++    );
+ 
++  }
+ }
+Index: angular/breathVeganFront/src/app/modules/registration/log-in/log-in.component.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><div fxLayoutAlign=\"center center\" fxFlexFill class=\"main-div\">\n<mat-card fxFlex=\"25\" >\n<mat-toolbar class=\"toolbar-green\">Login</mat-toolbar>\n<form [formGroup]='formControlService.loginForm' (submit)=\"login(username.value, password.value)\" fxLayoutAlign=\"stretch\" fxLayout=\"column\" class=\"login-form\">\n  <mat-form-field >\n    <input #username matInput placeholder=\"Username\" formControlName=\"username\">\n     <mat-error>Invalid email address or username</mat-error>\n  </mat-form-field>\n\n   <mat-form-field >\n    <input #password matInput placeholder=\"Password\" type=\"password\" formControlName=\"password\">\n     <mat-error>Provide a password</mat-error>\n  </mat-form-field>\n  <button class=\"green-button\" (click)=\"login(username.value, password.value)\" mat-raised-button type=\"submit\">Login</button>\n  <button class=\"green-button\" style=\"margin-top: 10px\" mat-raised-button type=\"submit\">Sign Up</button>\n  <p>{{ error?.message }}</p>\n  <p *ngIf=\"error\">{{ error?.error | json }}</p>\n</form>\n</mat-card>\n</div>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/angular/breathVeganFront/src/app/modules/registration/log-in/log-in.component.html b/angular/breathVeganFront/src/app/modules/registration/log-in/log-in.component.html
+--- a/angular/breathVeganFront/src/app/modules/registration/log-in/log-in.component.html	(revision a5957f30c111eaacc1b703caf005c38975a02fa5)
++++ b/angular/breathVeganFront/src/app/modules/registration/log-in/log-in.component.html	(date 1609768610286)
+@@ -13,8 +13,8 @@
+   </mat-form-field>
+   <button class="green-button" (click)="login(username.value, password.value)" mat-raised-button type="submit">Login</button>
+   <button class="green-button" style="margin-top: 10px" mat-raised-button type="submit">Sign Up</button>
+-  <p>{{ error?.message }}</p>
+-  <p *ngIf="error">{{ error?.error | json }}</p>
++  <!--p>{{ error?.message }}</p-->
++  <!-- p *ngIf="error">{{ error?.error | json }}</p-->
+ </form>
+ </mat-card>
+-</div>
+\ No newline at end of file
++</div>
+Index: angular/breathVeganFront/src/shared/browser/navigation.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { Component, Inject, OnInit } from '@angular/core';\nimport { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';\nimport { Router } from '@angular/router';\nimport { PopUpComponent } from '../../app/modules/popup/pop-up/pop-up.component';\n\n@Component({\n  selector: 'app-browser',\n  templateUrl: './navigation.component.html',\n  styleUrls: ['./navigation.component.scss']\n})\n\nexport class NavigationComponent implements OnInit {\n\nnavLinks: any[];\nactiveLinkIndex = -1;\ncurrentPath: string;\n\n\n  constructor(private router: Router,\n              private dialog: MatDialog ) { \n\n    this.navLinks = [\n      {\n        label: 'Accueil',\n        path: '/',\n        style: 'button-style',\n        index: 0\n      },\n      {\n        label: 'Recette',\n        subLabel: 'Ajouter une recette', \n        // subPath: '/add_recipe',\n        subLabel2: 'Voir liste des recettes',\n        subPath2: './see_recipes_list',\n        style: 'button-style',\n        index: 1\n      },\n      {\n        label: 'Magasin',\n        subLabel: 'Ajouter un magasin', \n        // subPath: './add_shop',\n        subLabel2: 'Voir liste des magasins',\n        subPath2: './see_shops_list',\n        style: 'button-style',\n        index: 2\n      },\n      {\n        label: 'Restaurant',\n        subLabel: 'Ajouter un restaurant', \n        // subPath: './add_restaurant',\n        subLabel2: 'Voir liste des restaurants',\n        subPath2: './see_restaurants_list',\n        style: 'button-style',\n        index: 3\n      },\n      {\n        label: 'Connexion',\n        path: '/login',\n        style: 'connexion-button-style',\n        index: 4\n      },\n    ];\n  }\n  \n  ngOnInit(): void {\n    this.router.events.subscribe((res) =>{\n       this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => {\n        if(tab.path !== undefined && tab.path.charAt(0) === \".\"){\n          return tab.path;\n        } else {\n          return {subLabelIndex: tab.subPath, subLabelIndex2: tab.subPath2}\n        }\n       }));\n    })\n  }\n\n  onAdd(){\n    console.log('you right');\n    const dialogConfig = new MatDialogConfig();\n    dialogConfig.disableClose = false;\n    dialogConfig.autoFocus = false;\n    dialogConfig.height = \"589px\"\n    dialogConfig.width = \"383px\"\n    this.dialog.open(PopUpComponent, dialogConfig);\n   \n  }\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/angular/breathVeganFront/src/shared/browser/navigation.component.ts b/angular/breathVeganFront/src/shared/browser/navigation.component.ts
+--- a/angular/breathVeganFront/src/shared/browser/navigation.component.ts	(revision a5957f30c111eaacc1b703caf005c38975a02fa5)
++++ b/angular/breathVeganFront/src/shared/browser/navigation.component.ts	(date 1609768610342)
+@@ -17,7 +17,7 @@
+ 
+ 
+   constructor(private router: Router,
+-              private dialog: MatDialog ) { 
++              private dialog: MatDialog ) {
+ 
+     this.navLinks = [
+       {
+@@ -28,7 +28,7 @@
+       },
+       {
+         label: 'Recette',
+-        subLabel: 'Ajouter une recette', 
++        subLabel: 'Ajouter une recette',
+         // subPath: '/add_recipe',
+         subLabel2: 'Voir liste des recettes',
+         subPath2: './see_recipes_list',
+@@ -37,7 +37,7 @@
+       },
+       {
+         label: 'Magasin',
+-        subLabel: 'Ajouter un magasin', 
++        subLabel: 'Ajouter un magasin',
+         // subPath: './add_shop',
+         subLabel2: 'Voir liste des magasins',
+         subPath2: './see_shops_list',
+@@ -46,7 +46,7 @@
+       },
+       {
+         label: 'Restaurant',
+-        subLabel: 'Ajouter un restaurant', 
++        subLabel: 'Ajouter un restaurant',
+         // subPath: './add_restaurant',
+         subLabel2: 'Voir liste des restaurants',
+         subPath2: './see_restaurants_list',
+@@ -61,7 +61,7 @@
+       },
+     ];
+   }
+-  
++
+   ngOnInit(): void {
+     this.router.events.subscribe((res) =>{
+        this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => {
+@@ -82,7 +82,7 @@
+     dialogConfig.height = "589px"
+     dialogConfig.width = "383px"
+     this.dialog.open(PopUpComponent, dialogConfig);
+-   
++
+   }
+ 
+ 
+Index: angular/breathVeganFront/src/app/modules/registration/signup/signup.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { Component, OnInit } from '@angular/core';\nimport { FormBuilder, FormGroup } from '@angular/forms';\nimport { Router } from '@angular/router';\nimport { FormControlService } from '../../../apiServices/form-control.service';\nimport { AuthService } from '../../../apiServices/auth.service';\n\n\n@Component({\n  selector: 'app-signup',\n  templateUrl: './signup.component.html',\n  styleUrls: ['./signup.component.css']\n})\nexport class SignupComponent implements OnInit {\n\n  error: any;\n\n  constructor(\n    private authService: AuthService,\n    private router: Router,\n    public formControlService: FormControlService\n  ) { }\n\n  ngOnInit() {\n  }\n\n  submit(){\n    return;\n  }\n\n\n  signup(username: string, email: string, password1: string, password2: string) {\n    this.authService.signup(username, email, password1, password2).subscribe(\n      _success => this.router.navigate(['shop-list']),\n      error => this.error = error\n    );\n  }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/angular/breathVeganFront/src/app/modules/registration/signup/signup.component.ts b/angular/breathVeganFront/src/app/modules/registration/signup/signup.component.ts
+--- a/angular/breathVeganFront/src/app/modules/registration/signup/signup.component.ts	(revision a5957f30c111eaacc1b703caf005c38975a02fa5)
++++ b/angular/breathVeganFront/src/app/modules/registration/signup/signup.component.ts	(date 1609768610386)
+@@ -30,7 +30,7 @@
+ 
+   signup(username: string, email: string, password1: string, password2: string) {
+     this.authService.signup(username, email, password1, password2).subscribe(
+-      _success => this.router.navigate(['shop-list']),
++      _success => this.router.navigate(['login']),
+       error => this.error = error
+     );
+   }
+Index: angular/breathVeganFront/src/app/modules/restaurants/restaurants-list/restaurants-list.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-restaurants-list',\n  templateUrl: './restaurants-list.component.html',\n  styleUrls: ['./restaurants-list.component.css']\n})\nexport class RestaurantsListComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/angular/breathVeganFront/src/app/modules/restaurants/restaurants-list/restaurants-list.component.ts b/angular/breathVeganFront/src/app/modules/restaurants/restaurants-list/restaurants-list.component.ts
+--- a/angular/breathVeganFront/src/app/modules/restaurants/restaurants-list/restaurants-list.component.ts	(revision a5957f30c111eaacc1b703caf005c38975a02fa5)
++++ b/angular/breathVeganFront/src/app/modules/restaurants/restaurants-list/restaurants-list.component.ts	(date 1609768610446)
+@@ -1,4 +1,5 @@
+ import { Component, OnInit } from '@angular/core';
++import {RestaurantsService} from '../../../apiServices/restaurants.service';
+ 
+ @Component({
+   selector: 'app-restaurants-list',
+@@ -7,7 +8,7 @@
+ })
+ export class RestaurantsListComponent implements OnInit {
+ 
+-  constructor() { }
++  constructor(private restaurantService: RestaurantsService) { }
+ 
+   ngOnInit(): void {
+   }
+Index: angular/breathVeganFront/src/app/app-routing.module.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';\nimport { Component, NgModule } from '@angular/core';\nimport { Routes, RouterModule, PreloadAllModules } from '@angular/router';\nimport { AuthGuard } from './apiServices/auth.service';\nimport { LogInComponent } from './modules/registration/log-in/log-in.component';\nimport { SignupComponent } from './modules/registration/signup/signup.component';\nimport { ShopListComponent } from './modules/shop/shop-list/shop-list.component';\nimport { VeganDetailsComponent } from '../app/modules/generic-components-module/vegan-details/vegan-details.component';\nimport { FavoritesListComponent } from '../app/modules/generic-components-module/favorites-list/favorites-list.component';\n\n\n\nconst routes: Routes = [\n\n  {\n    path:'signup',\n    component: SignupComponent\n  },\n\n  {\n    path: 'login',\n    component: LogInComponent\n  },\n  {\n    path: 'lazyRegistration',\n    loadChildren: './modules/registration/registration-routing.module#RegistrationRoutingModule'\n  },\n  {\n    path: 'recepeList',\n    loadChildren: () => import('./modules/recepee/recepee.module')\n    .then(mod => mod.RecepeeModule),\n    canActivate: [AuthGuard]\n  },\n  {\n    path:'shopList',\n    loadChildren: () => import('./modules/shop/shop.module')\n    .then(mod => mod.ShopModule),\n  },\n  {\n    path:'restaurantsList',\n    loadChildren: () => import('./modules/restaurants/restaurants.module')\n    .then(mod => mod.RestaurantsModule),\n    canActivate: [AuthGuard]\n  },\n  {\n    path:'resteurants',\n    loadChildren: './modules/restaurants/restaurants-routing.module#RestaurantsRoutingModule'\n  },\n\n  {\n    path: 'details/:id/:title', \n    component: VeganDetailsComponent\n  },\n\n  {\n    path: 'favoriteList', \n    component: FavoritesListComponent\n  }\n];\n\n@NgModule({\n  imports: \n  [RouterModule.forRoot(routes, {\n    preloadingStrategy: PreloadAllModules\n  })],\n  exports: [RouterModule],\n  providers:[]\n})\n\nexport class AppRoutingModule { }\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/angular/breathVeganFront/src/app/app-routing.module.ts b/angular/breathVeganFront/src/app/app-routing.module.ts
+--- a/angular/breathVeganFront/src/app/app-routing.module.ts	(revision a5957f30c111eaacc1b703caf005c38975a02fa5)
++++ b/angular/breathVeganFront/src/app/app-routing.module.ts	(date 1609768652426)
+@@ -6,16 +6,20 @@
+ import { SignupComponent } from './modules/registration/signup/signup.component';
+ import { ShopListComponent } from './modules/shop/shop-list/shop-list.component';
+ import { VeganDetailsComponent } from '../app/modules/generic-components-module/vegan-details/vegan-details.component';
+-import { FavoritesListComponent } from '../app/modules/generic-components-module/favorites-list/favorites-list.component';
++import {BodyComponent} from './modules/home/body/body.component';
+ 
+ 
+ 
+ const routes: Routes = [
+ 
+   {
+-    path:'signup',
++    path: 'signup',
+     component: SignupComponent
+   },
++  {
++    path: '',
++    component: BodyComponent
++  },
+ 
+   {
+     path: 'login',
+@@ -32,34 +36,29 @@
+     canActivate: [AuthGuard]
+   },
+   {
+-    path:'shopList',
++    path: 'shopList',
+     loadChildren: () => import('./modules/shop/shop.module')
+     .then(mod => mod.ShopModule),
+   },
+   {
+-    path:'restaurantsList',
++    path: 'restaurantsList',
+     loadChildren: () => import('./modules/restaurants/restaurants.module')
+     .then(mod => mod.RestaurantsModule),
+     canActivate: [AuthGuard]
+   },
+   {
+-    path:'resteurants',
++    path: 'resteurants',
+     loadChildren: './modules/restaurants/restaurants-routing.module#RestaurantsRoutingModule'
+   },
+ 
+   {
+-    path: 'details/:id/:title', 
++    path: 'details/:id',
+     component: VeganDetailsComponent
+-  },
+-
+-  {
+-    path: 'favoriteList', 
+-    component: FavoritesListComponent
+   }
+ ];
+ 
+ @NgModule({
+-  imports: 
++  imports:
+   [RouterModule.forRoot(routes, {
+     preloadingStrategy: PreloadAllModules
+   })],
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"33d8532f-5a83-4494-b528-d48b0411627c\" name=\"Default Changelist\" comment=\"\">\n      <change afterPath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.scss\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/angular/breathVeganFront/src/assets/fonts/Montserrat-Regular.ttf\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/angular/breathVeganFront/src/assets/imgs/print.svg\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/angular/breathVeganFront/src/assets/imgs/share.svg\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/angular/breathVeganFront/src/assets/imgs/star.svg\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/app.module.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/app.module.ts\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/generic-components.module.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/generic-components.module.ts\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.css\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.ts\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/angular/breathVeganFront/src/styles.scss\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/angular/breathVeganFront/src/styles.scss\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"ProjectId\" id=\"1mOcd7h6T7QMTu99DitDHNDpaGR\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"33d8532f-5a83-4494-b528-d48b0411627c\" name=\"Default Changelist\" comment=\"\" />\n      <created>1609368185173</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1609368185173</updated>\n      <workItem from=\"1609368188851\" duration=\"2064000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"dev\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision a5957f30c111eaacc1b703caf005c38975a02fa5)
++++ b/.idea/workspace.xml	(date 1609768652510)
+@@ -2,17 +2,19 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="33d8532f-5a83-4494-b528-d48b0411627c" name="Default Changelist" comment="">
+-      <change afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.scss" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/assets/fonts/Montserrat-Regular.ttf" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/assets/imgs/print.svg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/assets/imgs/share.svg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/assets/imgs/star.svg" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/app.module.ts" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/generic-components.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/generic-components.module.ts" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.css" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-details/vegan-details.component.ts" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/styles.scss" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/app-routing.module.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/models/recipe.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/models/recipe.interface.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/models/restaurant.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/models/restaurant.interface.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/models/shop.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/models/shop.interface.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-cards/vegan-cards.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-cards/vegan-cards.component.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/home/body/body.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/home/body/body.component.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/popup/pop-up/pop-up.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/popup/pop-up/pop-up.component.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/registration/log-in/log-in.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/registration/log-in/log-in.component.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/registration/log-in/log-in.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/registration/log-in/log-in.component.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/registration/signup/signup.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/registration/signup/signup.component.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/restaurants/restaurants-list/restaurants-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/app/modules/restaurants/restaurants-list/restaurants-list.component.ts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/angular/breathVeganFront/src/shared/browser/navigation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular/breathVeganFront/src/shared/browser/navigation.component.ts" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -20,6 +22,11 @@
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="dev" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="ProjectId" id="1mOcd7h6T7QMTu99DitDHNDpaGR" />
+@@ -28,6 +35,7 @@
+     <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent">
++    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+@@ -38,6 +46,7 @@
+     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+     <property name="nodejs_package_manager_path" value="npm" />
++    <property name="ts.external.directory.path" value="$PROJECT_DIR$/angular/breathVeganFront/node_modules/typescript/lib" />
+     <property name="vue.rearranger.settings.migration" value="true" />
+   </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+@@ -49,6 +58,7 @@
+       <option name="presentableId" value="Default" />
+       <updated>1609368185173</updated>
+       <workItem from="1609368188851" duration="2064000" />
++      <workItem from="1609768031061" duration="333000" />
+     </task>
+     <servers />
+   </component>
+@@ -77,5 +87,6 @@
+         </entry>
+       </map>
+     </option>
++    <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: angular/breathVeganFront/src/app/models/shop.interface.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>export interface ShopInterface {\n    id: number;\n    productName: string\n    title: string;\n    picture: any;\n    description: string;\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/angular/breathVeganFront/src/app/models/shop.interface.ts b/angular/breathVeganFront/src/app/models/shop.interface.ts
+--- a/angular/breathVeganFront/src/app/models/shop.interface.ts	(revision a5957f30c111eaacc1b703caf005c38975a02fa5)
++++ b/angular/breathVeganFront/src/app/models/shop.interface.ts	(date 1609768588626)
+@@ -1,7 +1,9 @@
+ export interface ShopInterface {
+     id: number;
+-    productName: string
+     title: string;
+-    picture: any;
+     description: string;
+-}
+\ No newline at end of file
++    picture: any;
++    email: any;
++    created_at: Date;
++    address: string;
++}
+Index: angular/breathVeganFront/src/app/models/restaurant.interface.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>export interface RestaurantInterface {\n    id: number;\n    productName: string;\n    title: string;\n    picture: any;\n    description: string;\n    favoriteState: boolean;\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/angular/breathVeganFront/src/app/models/restaurant.interface.ts b/angular/breathVeganFront/src/app/models/restaurant.interface.ts
+--- a/angular/breathVeganFront/src/app/models/restaurant.interface.ts	(revision a5957f30c111eaacc1b703caf005c38975a02fa5)
++++ b/angular/breathVeganFront/src/app/models/restaurant.interface.ts	(date 1609768608518)
+@@ -1,8 +1,8 @@
+-export interface RestaurantInterface {
++export class RestaurantModel {
+     id: number;
+-    productName: string;
+     title: string;
+-    picture: any;
++    email: string;
+     description: string;
+-    favoriteState: boolean;
+-}
+\ No newline at end of file
++    created_at: Date;
++    picture: any;
++}
+Index: angular/breathVeganFront/src/app/models/recipe.interface.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>export interface RecipeInterface {\n    id: number;\n    productName: string;\n    title: string;\n    picture: any;\n    description: string;\n    favoriteState: boolean;\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/angular/breathVeganFront/src/app/models/recipe.interface.ts b/angular/breathVeganFront/src/app/models/recipe.interface.ts
+--- a/angular/breathVeganFront/src/app/models/recipe.interface.ts	(revision a5957f30c111eaacc1b703caf005c38975a02fa5)
++++ b/angular/breathVeganFront/src/app/models/recipe.interface.ts	(date 1609768610114)
+@@ -1,8 +1,8 @@
+-export interface RecipeInterface {
++export class RecipeeModel {
+     id: number;
+-    productName: string;
+     title: string;
+-    picture: any;
+     description: string;
+-    favoriteState: boolean;
+-}
+\ No newline at end of file
++    picture: any;
++    created_at: Date;
++    ingredients: [];
++}
+Index: angular/breathVeganFront/src/app/modules/registration/log-in/log-in.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { Component, OnInit } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { Router } from '@angular/router';\nimport { FormControlService } from '../../../apiServices/form-control.service';\nimport { AuthService } from '../../../apiServices/auth.service';\n\n@Component({\n  selector: 'app-log-in',\n  templateUrl: './log-in.component.html',\n  styleUrls: ['./log-in.component.css']\n})\nexport class LogInComponent implements OnInit {\n\n error: any;\n  \nconstructor(\n  private authService: AuthService,\n  private router: Router,\n  public formControlService: FormControlService\n) { }\n\n  ngOnInit() {\n  }\n\n  login(username: string, password: string){\n    this.authService.login(username,password).subscribe(\n      _success => this.router.navigate(['']),\n      error => this.error = error\n      \n    );\n    console.log(\"logged\", localStorage.getItem('token'));\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/angular/breathVeganFront/src/app/modules/registration/log-in/log-in.component.ts b/angular/breathVeganFront/src/app/modules/registration/log-in/log-in.component.ts
+--- a/angular/breathVeganFront/src/app/modules/registration/log-in/log-in.component.ts	(revision a5957f30c111eaacc1b703caf005c38975a02fa5)
++++ b/angular/breathVeganFront/src/app/modules/registration/log-in/log-in.component.ts	(date 1609768652562)
+@@ -4,6 +4,7 @@
+ import { FormControlService } from '../../../apiServices/form-control.service';
+ import { AuthService } from '../../../apiServices/auth.service';
+ 
++
+ @Component({
+   selector: 'app-log-in',
+   templateUrl: './log-in.component.html',
+@@ -12,7 +13,7 @@
+ export class LogInComponent implements OnInit {
+ 
+  error: any;
+-  
++
+ constructor(
+   private authService: AuthService,
+   private router: Router,
+@@ -23,11 +24,16 @@
+   }
+ 
+   login(username: string, password: string){
+-    this.authService.login(username,password).subscribe(
+-      _success => this.router.navigate(['']),
+-      error => this.error = error
+-      
++    this.authService.login(username, password).subscribe(
++      _success => {
++        this.router.navigate(['']),
++          console.log('logedIn');
++      },
++      (error) => {
++        this.error = error;
++        console.log('error on Auth', error);
++      }
+     );
+-    console.log("logged", localStorage.getItem('token'));
++    console.log('logged', localStorage.getItem('token'));
+   }
+ }
+Index: angular/breathVeganFront/src/app/modules/generic-components-module/vegan-cards/vegan-cards.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { Component, OnInit, Input } from '@angular/core';\nimport { Router } from '@angular/router';\nimport { VeganDetailsService } from '../../../service/vegan-details.service';\nimport { FavoriteManagerService } from '../../../service/favorites-manager.services';\n\n@Component({\n  selector: 'app-vegan-cards',\n  templateUrl: './vegan-cards.component.html',\n  styleUrls: ['./vegan-cards.component.scss']\n})\nexport class VeganCardsComponent implements OnInit {\n\n@Input() veganInformations: string;\nfavoriteSetting: any;\nfavoriteState: boolean;\n  constructor(private router: Router, private veganDetailsService: VeganDetailsService, private favoriteManagerService: FavoriteManagerService) {}\n\n  ngOnInit(): void {\n     \n  }\n\n  selectedVegan(vegan: any) {  \n    this.router.navigate([`/details`, vegan.id, vegan.title.replace(/ /g, '')])\n  }\n\n  getSettingsFavoris() {\n    this.veganDetailsService.favoritesListResult\n  }\n\n  changeFavoriteState(veganProductCurrent: any) {\n    console.log(veganProductCurrent)\n    veganProductCurrent.favoriteState = !veganProductCurrent.favoriteState;\n    const newTitle = this.veganDetailsService.changeTitle(veganProductCurrent.title).replace(/ /g, '');\n    this.veganDetailsService.changeStateFavorite(newTitle, veganProductCurrent.id, veganProductCurrent.favoriteState);\n    this.favoriteManagerService.setFavoriteStorage({id: veganProductCurrent.id, title: veganProductCurrent.title, favoriteState: veganProductCurrent.favoriteState})\n    if(!veganProductCurrent.favoriteState) {\n      const newTitle = this.veganDetailsService.changeTitle(veganProductCurrent.title).replace(/ /g, '');\n      this.veganDetailsService.changeStateFavorite(newTitle, veganProductCurrent.id, veganProductCurrent.favoriteState);\n      this.veganDetailsService.favoritesListResult.splice(veganProductCurrent.id, 1);\n    }\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-cards/vegan-cards.component.ts b/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-cards/vegan-cards.component.ts
+--- a/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-cards/vegan-cards.component.ts	(revision a5957f30c111eaacc1b703caf005c38975a02fa5)
++++ b/angular/breathVeganFront/src/app/modules/generic-components-module/vegan-cards/vegan-cards.component.ts	(date 1609768658942)
+@@ -1,7 +1,6 @@
+ import { Component, OnInit, Input } from '@angular/core';
+ import { Router } from '@angular/router';
+-import { VeganDetailsService } from '../../../service/vegan-details.service';
+-import { FavoriteManagerService } from '../../../service/favorites-manager.services';
++
+ 
+ @Component({
+   selector: 'app-vegan-cards',
+@@ -11,32 +10,18 @@
+ export class VeganCardsComponent implements OnInit {
+ 
+ @Input() veganInformations: string;
+-favoriteSetting: any;
+-favoriteState: boolean;
+-  constructor(private router: Router, private veganDetailsService: VeganDetailsService, private favoriteManagerService: FavoriteManagerService) {}
++
++  constructor(private router: Router) { }
+ 
+   ngOnInit(): void {
+-     
++
+   }
+ 
+-  selectedVegan(vegan: any) {  
+-    this.router.navigate([`/details`, vegan.id, vegan.title.replace(/ /g, '')])
++  selectedVegan(vegan: any) {
++    const test = vegan.title.replace(/ /g, '');
++    console.log(vegan);
++    this.router.navigate([`/${vegan.productName}Details`, vegan.id, vegan.title.replace(/ /g, '')]);
+   }
+ 
+-  getSettingsFavoris() {
+-    this.veganDetailsService.favoritesListResult
+-  }
+ 
+-  changeFavoriteState(veganProductCurrent: any) {
+-    console.log(veganProductCurrent)
+-    veganProductCurrent.favoriteState = !veganProductCurrent.favoriteState;
+-    const newTitle = this.veganDetailsService.changeTitle(veganProductCurrent.title).replace(/ /g, '');
+-    this.veganDetailsService.changeStateFavorite(newTitle, veganProductCurrent.id, veganProductCurrent.favoriteState);
+-    this.favoriteManagerService.setFavoriteStorage({id: veganProductCurrent.id, title: veganProductCurrent.title, favoriteState: veganProductCurrent.favoriteState})
+-    if(!veganProductCurrent.favoriteState) {
+-      const newTitle = this.veganDetailsService.changeTitle(veganProductCurrent.title).replace(/ /g, '');
+-      this.veganDetailsService.changeStateFavorite(newTitle, veganProductCurrent.id, veganProductCurrent.favoriteState);
+-      this.veganDetailsService.favoritesListResult.splice(veganProductCurrent.id, 1);
+-    }
+-  }
+ }
+Index: angular/breathVeganFront/src/app/modules/popup/pop-up/pop-up.component.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><div fxLayoutAlign=\"center center\" fxFlexFill class=\"main-div\">\n <form>\n    <mat-toolbar class=\"toolbar-popup\">Ajouter un magasin</mat-toolbar>\n    <div  fxLayout=\"column\" fxLayoutAlign=\"space-between stretch\">\n    <mat-form-field appearance=\"outline\" >\n        <mat-hint>Titre</mat-hint>\n        <mat-label>Insérer un titre</mat-label>\n        <input matInput placeholder=\"Placeholder\">\n      </mat-form-field>\n        \n      <mat-form-field appearance=\"outline\">\n        <mat-hint>Image</mat-hint>\n        <mat-label>Insérer une image</mat-label>\n        <input matInput placeholder=\"Placeholder\">\n        <mat-icon matSuffix>insert_photo</mat-icon>\n      </mat-form-field>\n\n     <mat-form-field appearance=\"outline\">\n    <mat-label>Insérer une description</mat-label>\n    <textarea matInput></textarea>\n    <mat-hint>Description</mat-hint>\n  </mat-form-field>\n    </div>\n\n        \n</form>\n</div>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/angular/breathVeganFront/src/app/modules/popup/pop-up/pop-up.component.html b/angular/breathVeganFront/src/app/modules/popup/pop-up/pop-up.component.html
+--- a/angular/breathVeganFront/src/app/modules/popup/pop-up/pop-up.component.html	(revision a5957f30c111eaacc1b703caf005c38975a02fa5)
++++ b/angular/breathVeganFront/src/app/modules/popup/pop-up/pop-up.component.html	(date 1609768659018)
+@@ -2,26 +2,25 @@
+  <form>
+     <mat-toolbar class="toolbar-popup">Ajouter un magasin</mat-toolbar>
+     <div  fxLayout="column" fxLayoutAlign="space-between stretch">
+-    <mat-form-field appearance="outline" >
++    <mat-form-field >
+         <mat-hint>Titre</mat-hint>
+         <mat-label>Insérer un titre</mat-label>
+         <input matInput placeholder="Placeholder">
+       </mat-form-field>
+-        
+-      <mat-form-field appearance="outline">
++
++      <mat-form-field>
+         <mat-hint>Image</mat-hint>
+         <mat-label>Insérer une image</mat-label>
+         <input matInput placeholder="Placeholder">
+         <mat-icon matSuffix>insert_photo</mat-icon>
+       </mat-form-field>
+ 
+-     <mat-form-field appearance="outline">
++     <mat-form-field>
+     <mat-label>Insérer une description</mat-label>
+     <textarea matInput></textarea>
+     <mat-hint>Description</mat-hint>
+   </mat-form-field>
+     </div>
+ 
+-        
+ </form>
+ </div>

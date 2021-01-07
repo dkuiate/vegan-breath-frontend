@@ -1,0 +1,26 @@
+.favorite-title h2{
+  text-align: center;
+  margin: 170px 0 12px 0;
+  font-size: 48px;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.favorite-list {
+  margin-top: 66px;
+}
+
+.favorite-list li {
+  cursor: pointer;
+  color: #007BFF;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.favorite-list button {
+  height: 30px;
+  border-radius: 50%;
+  background-color: #439C1D;
+  color: white;
+}

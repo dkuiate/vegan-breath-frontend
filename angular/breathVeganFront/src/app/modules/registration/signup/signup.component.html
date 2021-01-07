@@ -17,17 +17,15 @@
    <mat-form-field >
     <input #password1 matInput placeholder="choose a password" type="password" formControlName="password">
      <mat-error *ngIf="formControlService.signUpForm.controls['password'].errors?.required">This field is mandatory.</mat-error>
-     <mat-error *ngIf="formControlService.signUpForm.controls['username'].errors?.minlength">Minimum 5 charactors needed.</mat-error>
-     <mat-error *ngIf="formControlService.signUpForm.controls['username'].errors?.hasNumber">At least one number required.</mat-error>
-     <mat-error *ngIf="formControlService.signUpForm.controls['username'].errors?.hasCapitalCase">At least one capital case.</mat-error>
+     <mat-error *ngIf="formControlService.signUpForm.controls['password'].errors?.minlength">Minimum 8 charactors needed.</mat-error>
+     <mat-error *ngIf="formControlService.signUpForm.controls['password'].errors?.hasNumber">At least one number required.</mat-error>
+     <mat-error *ngIf="formControlService.signUpForm.controls['password'].errors?.hasCapitalCase">At least one capital case.</mat-error>
   </mat-form-field>
 
    <mat-form-field >
-    <input #password2 matInput placeholder="confirm Password" type="password" formControlName="confirmPassword">
+    <input #password2 matInput placeholder="confirm Password" type="password">
   </mat-form-field>
-<button class="green-button" (click)="signup(username.value, email.value, password1.value, password2.value)">signup</button> 
-  <p>{{ error?.message }}</p>
-  <p *ngIf="error">{{ error?.error | json }}</p>
+<button class="green-button" (click)="signup(username.value, email.value, password1.value, password2.value)">signup</button>
 </form>
 </mat-card>
 </div>

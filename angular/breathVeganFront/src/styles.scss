@@ -1,13 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import './material-overrides.scss';
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@font-face {
+    font-family: "Montserrat";
+    src: url('../src/assets/fonts/Montserrat-Regular.ttf') format("ttf");
+}
 
 .toolbar-green {
     color: white!important;
     background: #439C1D;
+
 }
- 
+
 .green-button{
     color: white!important;
     background: #439C1D;
+}
+
+.red-button{
+  color: white!important;
+  background: indianred;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #439C1D;
+}
+
+.column-center {
+    float: none;
+    margin: auto;
+}
+
+.ingredients-list li::marker {
+    color: #439C1D;
+}
+
+mat-divider {
+    background: #439C1D;
+}
+
+button:focus {
+    outline: none;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.custom-mat-menu {
+    background: linear-gradient(99.35deg, #FFD484 50.07%, #EDEFF1 50.07%);
+    border-radius: 10px;
+    color: #439C1D;
 }

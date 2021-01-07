@@ -1,0 +1,135 @@
+<div>
+  <div>
+    <mat-card>
+      <mat-card-header >
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title >titre</mat-card-title>
+
+      </mat-card-header>
+      <img mat-card-image class="image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          ici la description
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <mat-divider></mat-divider><br>
+
+  <div>
+      <mat-card-content>
+        ici la description
+      </mat-card-content>
+  </div>
+
+  <div *ngFor="let pda of productDetailsArray"  fxLayout="row" fxLayoutAlign="center center" class="image">
+    <button mat-raised-button (click)="printPage()"><mat-icon>print</mat-icon>Imprimer</button>
+    <button mat-raised-button><mat-icon>share</mat-icon>Partager</button>
+    <button mat-raised-button (click)="favoriteManager(pda.id, pda.title, pda.favoriteState)"><mat-icon>star</mat-icon>Favoris</button>
+  </div>
+
+  <div>
+    <a routerLink="/"> <- Retour</a>
+  </div>
+
+  <div>
+    <a routerLink="/favoriteList">Favoris</a>
+  </div>
+</div>
+
+<!--div class="container-fluid">
+  <div class="vegan-details-component" *ngFor="let pda of productDetailsArray">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="follow-product">
+          <button mat-icon-button (click)="favoriteState(pda)">
+          <mat-icon
+          *ngIf="pda.favoriteState"
+           aria-label="Example icon-button with a heart icon">
+           favorite
+         </mat-icon>
+
+         <mat-icon
+         *ngIf="!pda.favoriteState"
+         aria-label="Example icon-button with a heart icon">
+         favorite_border
+         </mat-icon>
+        </button>
+        </div>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4 col-sm-12 offset-sm-1 col-12 offset-4">
+          <div class="product-detail-title">
+              <h1>{{pda.title}}</h1>
+            </div>
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3 col-sm-12 offset-sm-1 offset-4">
+          <div class="product-detail-picture">
+            <img src="{{pda.picture}}">
+          </div>
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-lg-12 offset-lg-0 col-sm-12 offset-sm-1 col-12 offset-4">
+        <div class="ingredients-title">
+           <h2>{{pda.subTitle1}}</h2>
+           <mat-divider></mat-divider>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 offset-lg-0 col-sm-12 offset-sm-1 col-12 offset-4">
+        <div class="ingredients-list">
+           <ul *ngFor="let il of pda.informationsList">
+             <li>{{il}}</li>
+           </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 offset-lg-0 col-sm-12 offset-sm-1 col-12 offset-4">
+        <div class="making-recipe-title">
+           <h2>{{pda.subTitle2}}</h2>
+           <mat-divider></mat-divider>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1 col-sm-12 offset-sm-1 col-12 offset-4">
+        <div class="making-recipe-description">
+           <p>{{pda.description}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 offset-lg-0 col-sm-12 offset-sm-1 col-12 offset-4">
+        <div class="group-button">
+          <div class="row">
+            <div class="col-lg-4 col-4">
+              <button mat-raised-button (click)="favoriteManager(pda.id, pda.title, pda.favoriteState)"><img src="assets/imgs/star.svg">Favoris</button>
+            </div>
+            <div class="col-lg-4 col-4">
+              <button mat-raised-button><img src="assets/imgs/share.svg">Partager</button>
+            </div>
+            <div class="col-lg-4 col-4">
+              <button mat-raised-button (click)="printPage()"><img src="assets/imgs/print.svg">Imprimer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-1">
+        <div class="back-to-home">
+          <a routerLink="/"> <- Retour</a>
+        </div>
+        <div class="favorites">
+          <a routerLink="/favoriteList">Favoris</a>
+        </div>
+      </div>
+    </div>
+   </div>
+ </div-->
