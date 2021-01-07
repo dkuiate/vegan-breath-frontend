@@ -4,7 +4,7 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span>Vegan Breath</span>
-    <div class="group-menu-button" *ngFor="let link of navLinks" [routerLink]="link.path"  routerLinkActive #rla="routerLinkActive"  [active]="rla.isActive">
+    <div class="group-menu-button" *ngFor="let link of navLinks" [routerLink]="link.path"  routerLinkActive #rla="routerLinkActive"  [active]="rla.isActive" fxHide.lt-md>
       <button mat-button class="{{link.style}}" *ngIf="link.label === 'Accueil' || link.label === 'Connexion'" routerLink="link.path" >{{link.label}}</button>
       <button mat-button class="{{link.style}}" [matMenuTriggerFor]="homeMenu" *ngIf="link.label !== 'Accueil' && link.label !== 'Connexion'">{{link.label}}<mat-icon>arrow_drop_down</mat-icon></button>
       <mat-menu class="custom-mat-menu" #homeMenu="matMenu" yPosition="above">
