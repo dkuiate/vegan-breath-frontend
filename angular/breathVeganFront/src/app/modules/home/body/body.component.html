@@ -14,7 +14,22 @@
                 </div>
             </div>
         </div>
-    </div>
+
+    <div fxLayout="row wrap">
+        <div class="item">1. One</div>
+        <div class="item">2. Two</div>
+        <div class="item">3. Three</div>
+        <div class="item">4. Four</div>
+      </div>
+        <div class="col-lg-12">
+            <div class="search-field">
+                <mat-form-field appearance="outline">
+                    <mat-label>Location des distributions</mat-label>
+                    <input matInput placeholder="Entrer une ville ou region">
+                </mat-form-field>
+                <button mat-raised-button (click)="dispayDistributionAround()">Carte</button>
+            </div> 
+        </div>
     <div class="row">
         <div class="col-lg-5 offset-lg-4 col-12 offset-5 offset-sm-5 mt-5">
             <div class="last-news-title">
