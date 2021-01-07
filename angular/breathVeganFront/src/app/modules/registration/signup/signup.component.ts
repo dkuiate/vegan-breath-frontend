@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormControlService } from '../../../apiServices/form-control.service';
 import { AuthService } from '../../../apiServices/auth.service';
+import {isNotNullOrUndefined} from 'codelyzer/util/isNotNullOrUndefined';
 
 
 @Component({
@@ -30,8 +31,22 @@ export class SignupComponent implements OnInit {
 
   signup(username: string, email: string, password1: string, password2: string) {
     this.authService.signup(username, email, password1, password2).subscribe(
-      _success => this.router.navigate(['login']),
-      error => this.error = error
+      (response) => {
+        window.alert('Welcome, you can now log in');
+        this.router.navigate(['login']);
+      },
+      (error) => {
+        console.log('erreur' , error);
+        if (isNotNullOrUndefined(error.error.email)){
+          window.alert(`error: ${error.error.email} try again`);
+        }
+        if (isNotNullOrUndefined(error.e.username)) {
+          window.alert(`error: ${error.error.email} try again`);
+        }
+        if (isNotNullOrUndefined(error.error.global[0])){
+          window.alert(error.error.global[0]);
+        }
+      }
     );
   }
 

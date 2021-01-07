@@ -1,6 +1,6 @@
 .description-input{
-    padding: 20px 10px; 
-    line-height: 28px; 
+    padding: 20px 10px;
+    line-height: 28px;
 }
 
 textarea {
@@ -8,4 +8,8 @@ textarea {
     height: 199px;
     left: 14px;
     top: 318px;
+}
+
+.formClass{
+  width: 600px;
 }

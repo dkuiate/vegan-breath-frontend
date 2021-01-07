@@ -12,13 +12,16 @@ export class RecepeeService {
     private httpClient: HttpClient) { }
 
   getRecepee(){
+    return this.httpClient.get(this.apiRoot.concat('api/vegan/lastRecette'));
+  }
+  getAllRecepee(){
     return this.httpClient.get(this.apiRoot.concat('api/vegan/recettes'));
   }
 
-  /*createRecepee(title: string, description: string, email: string, created_at: Date) {
+  addRecepee(title: string, email: string, picture: string, description: string) {
     return this.httpClient.post(
-      this.apiRoot.concat('addRestaurants/'),
-      { title, description, email, created_at }
+      this.apiRoot.concat('api/vegan/addRecette'),
+      {title, email, picture, description }
     );
-  }*/
+  }
 }

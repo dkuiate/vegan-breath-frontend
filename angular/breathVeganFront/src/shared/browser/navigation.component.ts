@@ -3,7 +3,7 @@ import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angu
 import { Router } from '@angular/router';
 import { PopUpComponent } from '../../app/modules/popup/pop-up/pop-up.component';
 import {CommonService} from '../../app/apiServices/common.service';
-import {element} from "protractor";
+import {element} from 'protractor';
 import {of} from "rxjs";
 
 @Component({
@@ -32,28 +32,28 @@ export class NavigationComponent implements OnInit {
       },
       {
         label: 'Recette',
-        subLabel: 'Ajouter une recette',
+        subLabel1: 'Ajouter une recette',
         // subPath: '/add_recipe',
         subLabel2: 'Voir liste des recettes',
-        subPath2: './see_recipes_list',
+        // subPath2: './see_recipes_list',
         style: 'button-style',
         index: 1
       },
       {
         label: 'Magasin',
-        subLabel: 'Ajouter un magasin',
+        subLabel1: 'Ajouter un magasin',
         // subPath: './add_shop',
         subLabel2: 'Voir liste des magasins',
-        subPath2: './see_shops_list',
+        // subPath2: './see_shops_list',
         style: 'button-style',
         index: 2
       },
       {
         label: 'Restaurant',
-        subLabel: 'Ajouter un restaurant',
+        subLabel1: 'Ajouter un restaurant',
         // subPath: './add_restaurant',
         subLabel2: 'Voir liste des restaurants',
-        subPath2: './see_restaurants_list',
+        // subPath2: './see_restaurants_list',
         style: 'button-style',
         index: 3
       },
@@ -79,7 +79,7 @@ export class NavigationComponent implements OnInit {
     this.commonService.setListData(this.navLinks);
   }
 
-  onAdd(event: any): void{
+  onAdd(event: any): void {
     if (event.target.textContent === 'Ajouter un restaurant'){
       this.commonService.setElement('un restaurant');
     }
@@ -93,10 +93,16 @@ export class NavigationComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
-    dialogConfig.height = '589px';
-    dialogConfig.width = '383px';
+    dialogConfig.height = '500px';
+    dialogConfig.width = '600px';
     this.dialog.open(PopUpComponent, dialogConfig);
+  }
 
+  onList(event: any): void {
+    console.log(event.target);
+    if (event.target.textContent === 'Voir liste des restaurants'){
+      this.router.navigate(['/restaurantList']);
+    }
   }
 
 
