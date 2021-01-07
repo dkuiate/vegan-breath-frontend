@@ -1,14 +1,14 @@
-//Install express server
-
 const express = require('express');
 const path = require('path');
 const app = express();
 
-// Serve only the static files form the dist directory
-app.use(express.static(src + '/dist/breath-vegan-front'));
-app.get('/*', function(req,res) {
-    res.sendFile(path.join('index.html, {root: 'dist/breath-vegan-front/’}'));
+// Serve static files....
+app.use(express.static(__dirname + '/dist/breath-vegan-front'));
+
+// Send all requests to index.html
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/breath-vegan-front/index.html'));
 });
 
-// Start the app by listening on the default Heroku port.
-app.listen(process.env.PORT || 8080);
+// default Heroku PORT
+app.listen(process.env.PORT || 3000);
