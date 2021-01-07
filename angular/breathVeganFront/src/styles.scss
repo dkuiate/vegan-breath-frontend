@@ -43,9 +43,8 @@ button:focus {
     padding: 0;
 }
 
- /*.mat-form-field-outline-start,
- .mat-form-field-outline-end {
-    border-radius: 50px !important;
-}*/
-
-
+.custom-mat-menu {
+    background: linear-gradient(99.35deg, #FFD484 50.07%, #EDEFF1 50.07%);
+    border-radius: 10px;
+    color: #439C1D;
+}

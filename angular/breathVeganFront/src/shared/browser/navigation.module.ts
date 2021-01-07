@@ -9,7 +9,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { BodyComponent } from '../../app/modules/home/body/body.component';
 import { RouterModule } from '@angular/router';
-
+import {MatButtonModule} from '@angular/material/button';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import { RouterModule } from '@angular/router';
         MatToolbarModule,
         MatMenuModule,
         MatIconModule,
-        RouterModule
+        MatButtonModule,
+        RouterModule,
+        FlexLayoutModule
     ],
     providers: [],
     exports: [
