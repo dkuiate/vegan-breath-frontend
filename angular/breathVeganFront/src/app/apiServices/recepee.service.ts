@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class RecepeeService {
 
-  private apiRoot = 'http://localhost:90/';
+  private apiRoot = 'https://vegan-breath.herokuapp.com/';
 
   constructor(
     private httpClient: HttpClient) { }
