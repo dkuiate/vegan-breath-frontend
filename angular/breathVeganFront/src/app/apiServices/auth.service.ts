@@ -13,7 +13,7 @@ import {JWTPayload} from '../models/JWTPayLoad.interface';
 })
 export class AuthService {
 
-  private apiRoot = 'http://0.0.0.0:90/auth/';
+  private apiRoot = 'https://vegan-breath.herokuapp.com/auth/';
 
   constructor(private httpClient: HttpClient) { }
 

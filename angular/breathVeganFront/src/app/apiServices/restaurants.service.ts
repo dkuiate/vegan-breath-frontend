@@ -7,7 +7,7 @@ import {RestaurantModel} from '../models/restaurant.interface';
 })
 export class RestaurantsService {
 
-  private apiRoot = 'http://localhost:90/';
+  private apiRoot = 'https://vegan-breath.herokuapp.com/';
   private resto: RestaurantModel;
 
   constructor(
