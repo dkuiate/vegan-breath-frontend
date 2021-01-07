@@ -12,7 +12,7 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-//@ts-ignore
+// @ts-ignore
 //
 export class RestaurantsRoutingModule { }
 

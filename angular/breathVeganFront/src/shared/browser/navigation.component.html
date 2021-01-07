@@ -4,12 +4,12 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span>Vegan Breath</span>
-    <div class="group-menu-button" *ngFor="let link of navLinks" [routerLink]="link.path"  routerLinkActive #rla="routerLinkActive"  [active]="rla.isActive" fxHide.lt-md>
-      <button mat-button class="{{link.style}}" *ngIf="link.label === 'Accueil' || link.label === 'Connexion'" routerLink="link.path">{{link.label}}</button>
-      <button mat-button class="{{link.style}}" [matMenuTriggerFor]="menuGreatScreen" *ngIf="link.label !== 'Accueil' && link.label !== 'Connexion'">{{link.label}}</button>
-      <mat-menu class="custom-mat-menu" #menuGreatScreen="matMenu" yPosition="below">
-        <button mat-menu-item [routerLink]="link.subPath" (click)= onAdd($event)>{{link.subLabel}}</button>
-        <button mat-menu-item [routerLink]="link.subPath2">{{link.subLabel2}}</button>
+    <div class="group-menu-button" *ngFor="let link of navLinks" [routerLink]="link.path"  routerLinkActive #rla="routerLinkActive"  [active]="rla.isActive">
+      <button mat-button class="{{link.style}}" *ngIf="link.label === 'Accueil' || link.label === 'Connexion'" routerLink="link.path" >{{link.label}}</button>
+      <button mat-button class="{{link.style}}" [matMenuTriggerFor]="homeMenu" *ngIf="link.label !== 'Accueil' && link.label !== 'Connexion'">{{link.label}}<mat-icon>arrow_drop_down</mat-icon></button>
+      <mat-menu class="custom-mat-menu" #homeMenu="matMenu" yPosition="above">
+        <button mat-menu-item [routerLink]="link.subPath" (click)= onAdd($event)>{{link.subLabel1}}</button>
+        <button mat-menu-item [routerLink]="link.subPath2" (click)="onList($event)" >{{link.subLabel2}}</button>
       </mat-menu>
    </div>
       <mat-menu #menuHeader="matMenu">
@@ -24,3 +24,4 @@
     </mat-menu>
   </mat-toolbar>
 </div>
+

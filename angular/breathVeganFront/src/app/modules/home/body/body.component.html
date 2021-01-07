@@ -1,7 +1,20 @@
-<div class="container-body"> 
-    <div fxLayout class="banner">
-        <img src="assets/imgs/banner.jpg">
-    </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 no-padding">
+            <div class="banner">
+                <img src="assets/imgs/banner.jpg">
+            </div>
+            <div class="col-lg-12">
+                <div class="search-field">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Location des distributions</mat-label>
+                        <input matInput placeholder="Entrer une ville ou region">
+                    </mat-form-field>
+                    <button mat-raised-button (click)="dispayDistributionAround()">Carte</button>
+                </div>
+            </div>
+        </div>
+
     <div fxLayout="row wrap">
         <div class="item">1. One</div>
         <div class="item">2. Two</div>

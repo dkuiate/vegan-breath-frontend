@@ -12,6 +12,10 @@ export class ShopsService {
     private httpClient: HttpClient) { }
 
   getShops(){
+    return this.httpClient.get(this.apiRoot.concat('api/vegan/lastShop'));
+  }
+
+  getAllShops(){
     return this.httpClient.get(this.apiRoot.concat('api/vegan/shops'));
   }
 

@@ -27,7 +27,7 @@ public detailData: any [];
 
   onDisplayDetails() {
     this.activatedRoute.paramMap
-    .subscribe((res: any) =>{
+    .subscribe((res: any) => {
       this.productDetailsArray = [];
        const currentDetailsResult = this.getCurrentDetails(res.params.id, res.params.title);
        this.productDetailsArray.push(currentDetailsResult);

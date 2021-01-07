@@ -19,6 +19,7 @@ import { BodyComponent } from './modules/home/body/body.component';
 import { ShopServiceService } from './apiServices/shop-service.service';
 import { FormControlService } from './apiServices/form-control.service';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 //Material
 
 import { MatInputModule } from '@angular/material/input';
@@ -33,6 +34,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { from } from 'rxjs';
 import { PopUpComponent } from './modules/popup/pop-up/pop-up.component';
+import {RestaurantsListComponent} from "./modules/restaurants/restaurants-list/restaurants-list.component";
+
 
 // import { BodyComponent } from './body/body.component';
  const routes: Routes = [
@@ -52,7 +55,8 @@ import { PopUpComponent } from './modules/popup/pop-up/pop-up.component';
     ApimapComponent,
     VeganCardsComponent,
     PopUpComponent,
-    BodyComponent
+    BodyComponent,
+    RestaurantsListComponent
   ],
   imports: [
     AppRoutingModule,
@@ -68,6 +72,7 @@ import { PopUpComponent } from './modules/popup/pop-up/pop-up.component';
     ShopModule,
     MatToolbarModule,
     MatMenuModule,
+    MatAutocompleteModule,
     MatIconModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAABqwkqj04XsQ01mQ2X7m-GYDmjtoPLqk',

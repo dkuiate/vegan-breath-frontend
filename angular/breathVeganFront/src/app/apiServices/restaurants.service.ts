@@ -14,11 +14,15 @@ export class RestaurantsService {
     private httpClient: HttpClient) { }
 
   getRestaurants(){
-    return this.httpClient.get(this.apiRoot.concat('api/vegan/restaurants'));
+    return this.httpClient.get(this.apiRoot.concat('api/vegan/lastRestaurants'));
   }
 
   getById(id: number){
     return this.httpClient.get(this.apiRoot.concat(`api/vegan/restaurantDetails/${id}`));
+  }
+
+  getAllRestaurants(){
+    return this.httpClient.get(this.apiRoot.concat('api/vegan/restaurants'));
   }
 
   addRestaurant(title: string, email: string, picture: string, description: string) {

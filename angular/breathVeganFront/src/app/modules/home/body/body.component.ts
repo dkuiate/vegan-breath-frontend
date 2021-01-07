@@ -4,6 +4,8 @@ import {RestaurantsService} from '../../../apiServices/restaurants.service';
 import {RecepeeService} from '../../../apiServices/recepee.service';
 import {ShopsService} from '../../../apiServices/shops.service';
 import { Router } from '@angular/router';
+import {FormControl} from '@angular/forms';
+import {CommonService} from '../../../apiServices/common.service';
 
 @Component({
   selector: 'app-body',
@@ -23,14 +25,25 @@ export class BodyComponent implements OnInit {
   subscription: Subscription;
   recepeeSubscription: Subscription;
   shopSubcription: Subscription;
-
+  searchControl = new FormControl();
+  inputSearchValue: string;
+  places: Subscription;
+  data: Object = [];
 
   constructor(private restaurantService: RestaurantsService,
               private recepeeService: RecepeeService,
               private shopsService: ShopsService,
-              private router: Router) { }
+              private router: Router,
+              private commonService: CommonService) { }
 
   ngOnInit(): void {
+
+    let title = 'Angular Google Maps Example';
+    let lat = 48.8534;
+    let lng = 2.3488;
+    let myCurrentPosition: google.maps.LatLngLiteral = {lat: null, lng: null};
+
+
     // restaurants
     this.subscription = this.restaurantService.getRestaurants().subscribe(
       (restaurantList) => {
@@ -74,7 +87,16 @@ export class BodyComponent implements OnInit {
     );
   }
 
-  dispayDistributionAround() {
-     this.router.navigate(['/map'])
+  dispayDistributionAround(): void {
+     this.router.navigate(['/map']);
   }
+
+
+  getText(event: any): void {
+    this.inputSearchValue = event.target.value;
+    this.commonService.setSearchText(this.inputSearchValue);
+    this.router.navigate(['/map']);
+  }
+
+
 }

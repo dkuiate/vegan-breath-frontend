@@ -1,7 +1,7 @@
 <div fxLayoutAlign="center center" fxFlexFill class="main-div">
 
- <form [formGroup] = "formControlService.addingItemForm" (submit)="createElement()">
-    <mat-toolbar class="toolbar-popup">Ajouter {{element}}</mat-toolbar><br>
+ <form [formGroup] = "formControlService.addingItemForm" (submit)="createElement()" class="formClass">
+    <mat-toolbar class="toolbar-green">Ajouter {{element}}</mat-toolbar><br>
     <div  fxLayout="column" fxLayoutAlign="space-between stretch">
         <mat-form-field>
             <mat-hint>Titre*</mat-hint>
@@ -12,8 +12,8 @@
 
           <mat-form-field >
             <mat-hint>Image*</mat-hint>
-            <mat-label>Insérer une image</mat-label>
-            <input #image matInput placeholder="Placeholder" formControlName="image" type="url">
+            <mat-label>Insérer une url</mat-label>
+            <input #image matInput placeholder="Placeholder" formControlName="image" type="url" (keyup)="addImage($event)">
             <mat-error>Ce champ est obligatoire</mat-error>
             <mat-icon matSuffix>insert_photo</mat-icon>
           </mat-form-field>
@@ -25,9 +25,11 @@
         <mat-hint>Description*</mat-hint>
       </mat-form-field>
 
-      <div class="example-button-row">
-        <button mat-button (click) = "createElement()">Ajouter</button>
-        <button mat-button (click)="discard()" color="warn">Annuler</button>
+      <div fxLayout="row" fxLayoutAlign="space-evenly center" fxFlex="100">
+        <div fxFlex="30"></div>
+        <div fxFlex="30"></div>
+        <button fxFlex="10" mat-button class="green-button" (click) = "createElement()">Ajouter</button>
+        <button fxFlex="10" mat-button class="red-button" (click)="discard()" color="warn">Annuler</button>
       </div>
 
     </div>

@@ -9,6 +9,8 @@ import { ApimapComponent } from './apimap/apimap.component';
 import { AgmCoreModule } from '@agm/core';
 import { VeganDetailsComponent } from '../app/modules/generic-components-module/vegan-details/vegan-details.component';
 import { FavoritesListComponent } from '../app/modules/generic-components-module/favorites-list/favorites-list.component';
+import {RestaurantsListComponent} from './modules/restaurants/restaurants-list/restaurants-list.component';
+import {BodyComponent} from './modules/home/body/body.component';
 
 
 
@@ -17,6 +19,10 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent
+  },
+  {
+    path: '',
+    component: BodyComponent,
   },
 
   {
@@ -43,15 +49,13 @@ const routes: Routes = [
     .then(mod => mod.ShopModule),
   },
   {
-    path: 'restaurantsList',
-    loadChildren: () => import('./modules/restaurants/restaurants.module')
-    .then(mod => mod.RestaurantsModule),
-    canActivate: [AuthGuard]
+    path: 'restaurantList',
+    component: RestaurantsListComponent
   },
-  {
+  /*{
     path: 'resteurants',
     loadChildren: './modules/restaurants/restaurants-routing.module#RestaurantsRoutingModule'
-  },
+  },*/
   {
     path: 'details/:id/:title',
     component: VeganDetailsComponent
@@ -59,7 +63,7 @@ const routes: Routes = [
   {
     path: 'favoriteList',
     component: FavoritesListComponent
-  }
+  },
 ];
 
 @NgModule({

@@ -33,5 +33,5 @@ import { FlexLayoutModule } from '@angular/flex-layout';
       NavigationComponent
     ],
   })
-  
+
   export class NavigationModule { }
