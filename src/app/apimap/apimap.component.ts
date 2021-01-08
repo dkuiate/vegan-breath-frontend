@@ -13,8 +13,7 @@ export class ApimapComponent implements OnInit {
   lat = 48.8534;
   lng = 2.3488;
   myCurrentPosition: google.maps.LatLngLiteral = {lat: this.lat, lng: this.lng};
- // googleMapType = 'roadMap';
-
+ 
   constructor(private commonService: CommonService) { }
 
   ngOnInit(): void {
